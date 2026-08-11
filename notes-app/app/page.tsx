@@ -1,4 +1,4 @@
-const Home = () => {
+export default function Home() {
   console.log('hello next.js')
   
   return (
@@ -20,5 +20,3 @@ const Home = () => {
     </div>
   )
 }
-
-export default Home
