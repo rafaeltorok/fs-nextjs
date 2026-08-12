@@ -1,0 +1,16 @@
+.new-blog-form-row {
+  display: flex;
+  justify-content: center;
+}
+
+.new-blog-form label {
+  width: 75px;
+  text-align: left;
+}
+
+.new-blog-form input {
+  width: 200px;
+  background-color: black;
+  color: white;
+  border-style: inset;
+}

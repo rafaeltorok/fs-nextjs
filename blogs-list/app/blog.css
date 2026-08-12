@@ -1,0 +1,28 @@
+table {
+  width: 300px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 2px solid gray;
+  border-collapse: collapse;
+}
+
+table thead th {
+  font-size: x-large;
+  background-color: black;
+}
+
+table th,
+table td {
+  border: 1px solid gray;
+  padding: 0.5rem;
+}
+
+table tbody th {
+  background-color: #252525;
+  font-weight: normal;
+}
+
+table tbody td {
+  background-color: #151515;
+  font-weight: bold;
+}

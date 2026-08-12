@@ -15,14 +15,18 @@ const blogs = [
     likes: 100,
     year: 2009,
   },
-]
+];
 
 function generateId() {
-  return Math.max(...blogs.map((b) => b.id)) + 1
+  return Math.max(...blogs.map((b) => b.id)) + 1;
 }
 
 export function getBlogs() {
-  return blogs
+  return blogs;
+}
+
+export function getBlogById(id: number) {
+  return blogs.find((b) => b.id === id);
 }
 
 export function addBlog(
@@ -38,5 +42,13 @@ export function addBlog(
     url,
     year: Number(year),
     likes: 0,
-  })
+  });
+}
+
+export function likeBlog(id: number) {
+  const blogToUpdate = blogs.find((b) => b.id === id);
+
+  if (blogToUpdate) {
+    blogToUpdate.likes += 1;
+  }
 }

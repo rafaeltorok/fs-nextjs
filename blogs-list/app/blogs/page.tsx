@@ -1,38 +1,30 @@
+import Link from "next/link";
 import { getBlogs } from "../services/blogs";
 
-export default function Blogs() {
-  const blogs = getBlogs();
+// TypeScript types
+import type { Blog } from "@/types/blog";
 
-  // Helper function to render each table row
-  function renderRow(header: string, data: string) {
-    return (
-      <tr>
-        <th>{header}</th>
-        <td>{data}</td>
-      </tr>
-    );
-  }
+// CSS styles
+import "../blogList.css";
+
+// Server component
+export default function Blogs() {
+  const blogs: Blog[] = getBlogs();
 
   return (
     <div>
       <h2>Blogs</h2>
-      <ul>
-        {blogs.map((b) => (
-          <table key={b.id}>
-            <thead>
-              <tr>
-                <th colSpan={2}>{b.title}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {renderRow("Author", b.author)}
-              {renderRow("URL", b.url)}
-              {renderRow("Likes", String(b.likes))}
-              {renderRow("Year", String(b.year))}
-            </tbody>
-          </table>
+      <div className="blog-list">
+        {blogs.toSorted((a, b) => b.likes - a.likes).map((b) => (
+          <div key={b.id}>
+            <Link
+              href={`/blogs/${b.id}`}
+            >
+              {b.title} by {b.author}
+            </Link>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import Link from "next/link"
+import Link from "next/link";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -8,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav>
+        <nav className="navbar">
           <Link href="/">Home</Link>
           {" | "}
           <Link href="/blogs">Blogs</Link>
@@ -18,5 +19,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }

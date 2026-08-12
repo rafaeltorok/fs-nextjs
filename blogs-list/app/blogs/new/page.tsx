@@ -1,5 +1,9 @@
 import { createBlog } from "@/app/actions/blogs";
 
+// CSS styles
+import "../../newBlogForm.css";
+
+// Server component
 export default function NewBlog() {
   // Renders each input row on the form
   function renderRow(
@@ -9,22 +13,22 @@ export default function NewBlog() {
     required: boolean
   ) {
     return (
-      <div>
+      <div className="new-blog-form-row">
         <label>
           {label}
-          {required ? (
-            <input
-              type={type}
-              name={name}
-              required
-            />
-          ) : (
-            <input
-              type={type}
-              name={name}
-            />
-          )}
         </label>
+        {required ? (
+          <input
+            type={type}
+            name={name}
+            required
+          />
+        ) : (
+          <input
+            type={type}
+            name={name}
+          />
+        )}
       </div>
     );
   }
@@ -32,7 +36,7 @@ export default function NewBlog() {
   return (
     <div>
       <h2>Add new blog</h2>
-      <form action={createBlog}>
+      <form action={createBlog} className="new-blog-form">
         {renderRow("Title", "text", "title", true)}
         {renderRow("Author", "text", "author", true)}
         {renderRow("URL", "text", "url", true)}
