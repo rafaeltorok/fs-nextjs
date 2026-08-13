@@ -11,7 +11,7 @@ import "../blogList.css";
 // Server component
 export default async function Blogs({ searchParams }: { searchParams: Promise<{ filter: string }> }) {
   const { filter } = await searchParams;
-  let blogs: Blog[] = getBlogs();
+  let blogs: Blog[] = await getBlogs();
 
   // Filter the list of Blogs by title
   if (filter) {

@@ -18,7 +18,7 @@ function renderTableRow(label: string, data: string | number) {
 // Server component
 export default async function BlogPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const blog = getBlogById(Number(id));
+  const blog = await getBlogById(Number(id));
 
   if (!blog) {
     notFound();

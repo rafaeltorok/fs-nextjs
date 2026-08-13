@@ -10,14 +10,14 @@ export async function createBlog(formData: FormData) {
   const url = formData.get("url") as string
   const year = formData.get("year") as string
 
-  addBlog(title, author, url, year)
+  await addBlog(title, author, url, year)
   revalidatePath("/blogs");
   redirect("/blogs")
 }
 
 export async function updateLikeCounter(formData: FormData) {
   const id = Number(formData.get("id"));
-  likeBlog(id);
+  await likeBlog(id);
   revalidatePath(`/blogs/${id}`);
   revalidatePath(`/blogs`);
 }
