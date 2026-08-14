@@ -3,9 +3,12 @@ import { db } from "../../db";
 import { blogs } from "../../db/schema";
 
 export async function getBlogs(filter: string) {
-  return db.query.blogs.findMany({
-    where: ilike(blogs.title, filter),
-  });
+  if (filter) {
+    return db.query.blogs.findMany({
+      where: ilike(blogs.title, `%${filter}%`),
+    });
+  }
+  return db.query.blogs.findMany();
 }
 
 export async function getBlogById(id: number) {
