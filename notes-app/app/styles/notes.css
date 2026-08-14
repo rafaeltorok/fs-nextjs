@@ -1,0 +1,6 @@
+.note-importance-area {
+  display: flex;
+  max-height: 1rem;
+  align-items: center;
+  gap: 0.5rem;
+}
