@@ -9,7 +9,11 @@ import type { Blog } from "@/types/blog";
 import "../blogList.css";
 
 // Server component
-export default async function Blogs({ searchParams }: { searchParams: Promise<{ filter: string }> }) {
+export default async function Blogs({
+  searchParams,
+}: {
+  searchParams: Promise<{ filter: string }>;
+}) {
   const { filter } = await searchParams;
   const blogs: Blog[] = await getBlogs(filter);
 
@@ -19,7 +23,7 @@ export default async function Blogs({ searchParams }: { searchParams: Promise<{ 
 
       <div className="search-field-area">
         <form action={updateRoute}>
-          <input 
+          <input
             type="text"
             name="search-field"
             id="search-field"
@@ -33,15 +37,15 @@ export default async function Blogs({ searchParams }: { searchParams: Promise<{ 
         <h3>No blogs were found.</h3>
       ) : (
         <div className="blog-list">
-          {blogs.toSorted((a, b) => b.likes - a.likes).map((b) => (
-            <div key={b.id}>
-              <Link
-                href={`/blogs/${b.id}`}
-              >
-                {b.title} by {b.author}
-              </Link>
-            </div>
-          ))}
+          {blogs
+            .toSorted((a, b) => b.likes - a.likes)
+            .map((b) => (
+              <div key={b.id}>
+                <Link href={`/blogs/${b.id}`}>
+                  {b.title} by {b.author}
+                </Link>
+              </div>
+            ))}
         </div>
       )}
     </div>

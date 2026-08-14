@@ -22,15 +22,16 @@ export async function addBlog(
   author: string,
   url: string,
   year: string,
+  userId: string,
 ) {
-  await db.insert(blogs)
-    .values({
-      title,
-      author,
-      url,
-      year: Number(year),
-      likes: 0,
-    });
+  await db.insert(blogs).values({
+    title,
+    author,
+    url,
+    year: Number(year),
+    likes: 0,
+    userId: Number(userId),
+  });
 }
 
 export async function likeBlog(id: number) {

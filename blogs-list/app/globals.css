@@ -38,3 +38,8 @@ button:active {
   background-color: #303030;
   border-style: inset;
 }
+
+ul {
+  list-style: none;
+  padding-left: 0; /* Removes the empty space from the list marker */
+}

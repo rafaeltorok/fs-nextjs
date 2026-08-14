@@ -10,24 +10,15 @@ export default function NewBlog() {
     label: string,
     type: string,
     name: string,
-    required: boolean
+    required: boolean,
   ) {
     return (
       <div className="new-blog-form-row">
-        <label>
-          {label}
-        </label>
+        <label>{label}</label>
         {required ? (
-          <input
-            type={type}
-            name={name}
-            required
-          />
+          <input type={type} name={name} required />
         ) : (
-          <input
-            type={type}
-            name={name}
-          />
+          <input type={type} name={name} />
         )}
       </div>
     );

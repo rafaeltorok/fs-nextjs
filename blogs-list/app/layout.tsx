@@ -4,7 +4,7 @@ import "./globals.css";
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -13,6 +13,8 @@ export default function RootLayout({
           <Link href="/">Home</Link>
           {" | "}
           <Link href="/blogs">Blogs</Link>
+          {" | "}
+          <Link href="/users">Users</Link>
           {" | "}
           <Link href="/blogs/new">Add blog</Link>
         </nav>

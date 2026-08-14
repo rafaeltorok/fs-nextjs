@@ -5,4 +5,5 @@ export interface Blog {
   url: string;
   likes: number;
   year: number;
+  userId: number;
 }
