@@ -1,28 +1,31 @@
 import { createBlog } from "@/app/actions/blogs";
+import { getUsers } from "@/app/services/users";
 
 // CSS styles
 import "../../newBlogForm.css";
 
+// Renders each input row on the form
+function renderRow(
+  label: string,
+  type: string,
+  name: string,
+  required: boolean,
+) {
+  return (
+    <div className="new-blog-form-row">
+      <label>{label}</label>
+      {required ? (
+        <input type={type} name={name} required />
+      ) : (
+        <input type={type} name={name} />
+      )}
+    </div>
+  );
+}
+
 // Server component
-export default function NewBlog() {
-  // Renders each input row on the form
-  function renderRow(
-    label: string,
-    type: string,
-    name: string,
-    required: boolean,
-  ) {
-    return (
-      <div className="new-blog-form-row">
-        <label>{label}</label>
-        {required ? (
-          <input type={type} name={name} required />
-        ) : (
-          <input type={type} name={name} />
-        )}
-      </div>
-    );
-  }
+export default async function NewBlog() {
+  const usersList = await getUsers();
 
   return (
     <div>
@@ -32,6 +35,20 @@ export default function NewBlog() {
         {renderRow("Author", "text", "author", true)}
         {renderRow("URL", "text", "url", true)}
         {renderRow("Year", "number", "year", true)}
+
+        <div className="new-blog-form-row">
+          <label>User</label>
+          <select name={"userId"}>
+            {usersList.map((u) => (
+              <option
+                key={u.id}
+                value={u.id}
+              >
+                {u.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <button type="submit">Add</button>
       </form>
