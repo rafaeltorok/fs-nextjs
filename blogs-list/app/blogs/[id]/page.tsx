@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getBlogById } from "@/app/services/blogs";
-import { getUserWithBlogs } from "@/app/services/users";
+import { getUserById } from "@/app/services/users";
 import { updateLikeCounter } from "@/app/actions/blogs";
 
 // CSS styles
@@ -24,7 +24,7 @@ export default async function BlogPage({
 }) {
   const { id } = await params;
   const blog = await getBlogById(Number(id));
-  const user = await getUserWithBlogs(Number(blog?.userId));
+  const user = await getUserById(Number(blog?.userId));
 
   if (!blog) {
     notFound();

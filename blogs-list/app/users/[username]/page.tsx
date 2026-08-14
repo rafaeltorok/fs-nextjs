@@ -7,10 +7,10 @@ import type { User } from "@/types/user";
 export default async function UserPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ username: string }>;
 }) {
-  const { id } = await params;
-  const user: User | undefined = await getUserWithBlogs(Number(id));
+  const { username } = await params;
+  const user: User | undefined = await getUserWithBlogs(decodeURIComponent(username));
 
   if (!user) {
     notFound();
