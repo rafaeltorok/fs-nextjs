@@ -19,6 +19,11 @@
   cd ./blogs-list && npm install
   ```
 
+- Run the migrations
+  ```bash
+  npx drizzle-kit migrate
+  ```
+
 ### Usage
 
 #### Development mode
@@ -43,6 +48,15 @@
   ```
 
 - Web UI on http://localhost:3000
+
+#### Database access
+
+- Drizzle Studio UI
+  ```bash
+  npx drizzle-kit studio
+  ```
+
+- Access on https://local.drizzle.studio
 
 
 ## Notes app

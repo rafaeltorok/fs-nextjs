@@ -11,11 +11,15 @@ import "../blogList.css";
 // Server component
 export default async function Blogs({ searchParams }: { searchParams: Promise<{ filter: string }> }) {
   const { filter } = await searchParams;
-  let blogs: Blog[] = await getBlogs();
+  const blogs: Blog[] = await getBlogs(filter);
 
-  // Filter the list of Blogs by title
-  if (filter) {
-    blogs = blogs.filter((b) => b.title.toLowerCase().includes(filter.toLowerCase().trim()));
+  if (blogs?.length === 0) {
+    return (
+      <div>
+        <h2>Blogs</h2>
+        <h3>No blogs are available.</h3>
+      </div>
+    );
   }
 
   return (

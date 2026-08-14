@@ -1,10 +1,10 @@
-import { eq } from "drizzle-orm";
+import { eq, ilike } from "drizzle-orm";
 import { db } from "../../db";
 import { blogs } from "../../db/schema";
 
 export async function getBlogs(filter: string) {
   return db.query.blogs.findMany({
-    where: eq(blogs.title, filter)
+    where: ilike(blogs.title, filter),
   });
 }
 
