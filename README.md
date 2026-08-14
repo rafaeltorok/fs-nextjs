@@ -14,6 +14,11 @@
 
 ### Setup
 
+- Create an `.env.local` file on the root of your project, add a Neon DB url
+  ```conf
+  DATABASE_URL="postgresql://<username>:<password>@<hostname>/neondb?channel_binding=require&sslmode=require"
+  ```
+
 - Install dependencies
   ```bash
   cd ./blogs-list && npm install
