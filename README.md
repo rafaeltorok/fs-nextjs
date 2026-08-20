@@ -14,9 +14,15 @@
 
 ### Setup
 
+- Generate a secret key to sign the JWT session tokens
+  ```bash
+  echo "$(openssl rand -base64 32)"
+  ```
+
 - Create an `.env.local` file on the root of your project, add a Neon DB url
   ```conf
   DATABASE_URL="postgresql://<username>:<password>@<hostname>/neondb?channel_binding=require&sslmode=require"
+  AUTH_SECRET=your_secret_auth_token
   ```
 
 - Install dependencies
@@ -67,6 +73,17 @@
 ## Notes app
 
 ### Setup
+
+- Generate a secret key to sign the JWT session tokens
+  ```bash
+  echo "$(openssl rand -base64 32)"
+  ```
+
+- Create an `.env.local` file on the root of your project, add a Neon DB url
+  ```conf
+  DATABASE_URL="postgresql://<username>:<password>@<hostname>/neondb?channel_binding=require&sslmode=require"
+  AUTH_SECRET=your_secret_auth_token
+  ```  
 
 - Install dependencies
   ```bash
