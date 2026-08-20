@@ -10,7 +10,9 @@ export default async function UserPage({
   params: Promise<{ username: string }>;
 }) {
   const { username } = await params;
-  const user: User | undefined = await getUserWithBlogs(decodeURIComponent(username));
+  const user: User | undefined = await getUserWithBlogs(
+    decodeURIComponent(username),
+  );
 
   if (!user) {
     notFound();

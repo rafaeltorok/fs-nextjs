@@ -1,5 +1,4 @@
 import { createBlog } from "@/app/actions/blogs";
-import { getUsers } from "@/app/services/users";
 
 // CSS styles
 import "../../newBlogForm.css";
@@ -25,8 +24,6 @@ function renderRow(
 
 // Server component
 export default async function NewBlog() {
-  const usersList = await getUsers();
-
   return (
     <div>
       <h2>Add new blog</h2>
@@ -35,20 +32,6 @@ export default async function NewBlog() {
         {renderRow("Author", "text", "author", true)}
         {renderRow("URL", "text", "url", true)}
         {renderRow("Year", "number", "year", true)}
-
-        <div className="new-blog-form-row">
-          <label>User</label>
-          <select name={"userId"}>
-            {usersList.map((u) => (
-              <option
-                key={u.id}
-                value={u.id}
-              >
-                {u.name}
-              </option>
-            ))}
-          </select>
-        </div>
 
         <button type="submit">Add</button>
       </form>
