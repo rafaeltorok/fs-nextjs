@@ -15,6 +15,13 @@
       "when": 1787231271354,
       "tag": "0001_optimal_squadron_supreme",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1787247078197,
+      "tag": "0002_mean_chronomancer",
+      "breakpoints": true
     }
   ]
 }
