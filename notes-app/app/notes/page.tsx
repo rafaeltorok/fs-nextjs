@@ -1,14 +1,14 @@
-import Link from "next/link"
-import { getNotes } from "../services/notes"
+import Link from "next/link";
+import { getNotes } from "../services/notes";
 
 export default async function Notes({
   searchParams,
 }: {
-  searchParams: Promise<{ important?: string }>
+  searchParams: Promise<{ important?: string }>;
 }) {
-  const { important } = await searchParams
-  const showImportant = important === "true"
-  const notes = await getNotes(showImportant)
+  const { important } = await searchParams;
+  const showImportant = important === "true";
+  const notes = await getNotes(showImportant);
 
   return (
     <div>
@@ -27,5 +27,5 @@ export default async function Notes({
         ))}
       </ul>
     </div>
-  )
+  );
 }

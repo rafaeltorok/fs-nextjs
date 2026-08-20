@@ -1,6 +1,6 @@
 export default function Home() {
-  console.log('hello next.js')
-  
+  console.log("hello next.js");
+
   return (
     <div>
       <div>
@@ -18,5 +18,5 @@ export default function Home() {
         for the source code
       </div>
     </div>
-  )
+  );
 }

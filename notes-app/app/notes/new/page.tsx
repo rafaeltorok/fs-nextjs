@@ -1,4 +1,4 @@
-import { createNote } from "../../actions/notes"
+import { createNote } from "../../actions/notes";
 
 const NewNote = () => {
   return (
@@ -20,7 +20,7 @@ const NewNote = () => {
         <button type="submit">Create</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default NewNote
+export default NewNote;

@@ -2,7 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getUserWithNotes } from "@/app/services/users";
 
-export default async function UserPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function UserPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const user = await getUserWithNotes(Number(id));
 

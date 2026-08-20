@@ -10,13 +10,13 @@ export const getNotes = (importantOnly: boolean) => {
   }
 
   return db.query.notes.findMany();
-}
+};
 
 export const getNoteById = (id: number) => {
   return db.query.notes.findFirst({
-    where: eq(notes.id, id)
+    where: eq(notes.id, id),
   });
-}
+};
 
 export const addNote = async (content: string, important: boolean) => {
   const user = await db.query.users.findFirst({
@@ -28,7 +28,7 @@ export const addNote = async (content: string, important: boolean) => {
   } else {
     await db.insert(notes).values({ content, important, userId: 0 });
   }
-}
+};
 
 export const toggleImportance = async (id: number) => {
   const note = await getNoteById(id);
@@ -36,6 +36,6 @@ export const toggleImportance = async (id: number) => {
     await db
       .update(notes)
       .set({ important: !note.important })
-      .where(eq(notes.id, id))
+      .where(eq(notes.id, id));
   }
-}
+};
