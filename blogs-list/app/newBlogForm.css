@@ -1,6 +1,8 @@
 .new-blog-form-row {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .new-blog-form label {
@@ -13,6 +15,8 @@
   background-color: black;
   color: white;
   border-style: inset;
+  padding: 0.15rem;
+  margin: 0.25rem 0;
 }
 
 .new-blog-form select {

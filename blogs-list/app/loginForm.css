@@ -1,0 +1,15 @@
+.login-form-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem auto;
+}
+
+.login-form-row input {
+  background-color: black;
+  color: white;
+  border-style: inset;
+  padding: 0.25rem;
+  width: 200px;
+}

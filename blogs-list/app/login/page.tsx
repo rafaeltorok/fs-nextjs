@@ -3,6 +3,7 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import "../loginForm.css";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,17 +32,13 @@ export default function LoginPage() {
       <h2>Login</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Username
-            <input type="text" name="username" required />
-          </label>
+        <div className="login-form-row">
+          <label htmlFor="username">Username</label>
+          <input id="username" type="text" name="username" required />
         </div>
-        <div>
-          <label>
-            Password
-            <input type="password" name="password" required />
-          </label>
+        <div className="login-form-row">
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password" name="password" required />
         </div>
         <button type="submit">Login</button>
       </form>
