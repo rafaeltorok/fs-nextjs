@@ -1,6 +1,7 @@
 import { createBlog } from "@/app/actions/blogs";
 import { auth } from "@/app/auth";
 import { redirect } from "next/navigation";
+import "../../formRow.css";
 
 // CSS styles
 import "../../newBlogForm.css";
@@ -13,7 +14,7 @@ function renderRow(
   required: boolean,
 ) {
   return (
-    <div className="new-blog-form-row">
+    <div className="form-row">
       <label>{label}</label>
       {required ? (
         <input type={type} name={name} required />
@@ -35,7 +36,7 @@ export default async function NewBlog() {
   return (
     <div>
       <h2>Add new blog</h2>
-      <form action={createBlog} className="new-blog-form">
+      <form action={createBlog}>
         {renderRow("Title", "text", "title", true)}
         {renderRow("Author", "text", "author", true)}
         {renderRow("URL", "text", "url", true)}

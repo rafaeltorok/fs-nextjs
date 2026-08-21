@@ -1,4 +1,5 @@
-.login-form-row {
+.form-row {
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,10 +7,15 @@
   margin: 0.5rem auto;
 }
 
-.login-form-row input {
+.form-row label {
+  width: 30%;
+  text-align: left;
+}
+
+.form-row input {
+  width: 70%;
   background-color: black;
   color: white;
   border-style: inset;
   padding: 0.25rem;
-  width: 200px;
 }
