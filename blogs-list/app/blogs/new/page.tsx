@@ -1,10 +1,9 @@
 import { createBlog } from "@/app/actions/blogs";
 import { auth } from "@/app/auth";
 import { redirect } from "next/navigation";
-import "../../formRow.css";
 
 // CSS styles
-import "../../newBlogForm.css";
+import "../../formRow.css";
 
 // Renders each input row on the form
 function renderRow(
