@@ -1,6 +1,14 @@
+import { redirect } from "next/navigation";
 import { createNote } from "../../actions/notes";
+import { auth } from "@/app/auth";
 
-const NewNote = () => {
+export default async function NewNote() {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <div>
       <h2>Create a new note</h2>
@@ -22,5 +30,3 @@ const NewNote = () => {
     </div>
   );
 };
-
-export default NewNote;
