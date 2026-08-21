@@ -5,7 +5,10 @@ import { addNote, toggleImportance } from "../services/notes";
 import { revalidatePath } from "next/cache";
 import { auth } from "../auth";
 
-export const createNote = async (formData: FormData) => {
+export const createNote = async (
+  prevState: { error: string },
+  formData: FormData,
+) => {
   const session = await auth();
   if (!session) {
     redirect("/login");
@@ -13,6 +16,10 @@ export const createNote = async (formData: FormData) => {
 
   const content = formData.get("content") as string;
   const important = formData.get("important") === "on";
+
+  if (!content || content.length < 10) {
+    return { error: "Note content must be at least 10 chars long"};
+  }
 
   await addNote(content, important);
   revalidatePath("/notes");

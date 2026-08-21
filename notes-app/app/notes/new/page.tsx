@@ -1,9 +1,13 @@
+"use client"
+
 import { redirect } from "next/navigation";
 import { createNote } from "../../actions/notes";
-import { auth } from "@/app/auth";
+import { useSession } from "next-auth/react";
+import { useActionState } from "react";
 
-export default async function NewNote() {
-  const session = await auth();
+export default function NewNote() {
+  const { data: session } = useSession();
+  const [state, formAction] = useActionState(createNote, { error: "" });
 
   if (!session) {
     redirect("/login");
@@ -12,7 +16,7 @@ export default async function NewNote() {
   return (
     <div>
       <h2>Create a new note</h2>
-      <form action={createNote}>
+      <form action={formAction}>
         <div>
           <label>
             Content
@@ -26,6 +30,7 @@ export default async function NewNote() {
           </label>
         </div>
         <button type="submit">Create</button>
+        {state.error && <p style={{ color: "red" }}>{state.error}</p>}
       </form>
     </div>
   );
