@@ -43,3 +43,8 @@ ul {
   list-style: none;
   padding-left: 0; /* Removes the empty space from the list marker */
 }
+
+.notification {
+  color: red;
+  font-weight: bold;
+}
