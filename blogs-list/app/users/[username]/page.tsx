@@ -24,13 +24,19 @@ export default async function UserPage({
       <p>Username: {user.username}</p>
       <h3>Blogs</h3>
       <ul>
-        {user.blogs.map((b) => (
-          <li key={b.id}>
-            <Link href={`/blogs/${b.id}`}>
-              {b.title} by {b.author}
-            </Link>
-          </li>
-        ))}
+        {user.blogs?.length > 0 ? (
+          <>
+            {user.blogs.map((b) => (
+              <li key={b.id}>
+                <Link href={`/blogs/${b.id}`}>
+                  {b.title} by {b.author}
+                </Link>
+              </li>
+            ))}
+          </>
+        ) : (
+          <p>This user has no blogs</p>
+        )}
       </ul>
     </div>
   );
