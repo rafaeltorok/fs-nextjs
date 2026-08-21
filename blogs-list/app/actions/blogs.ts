@@ -15,9 +15,8 @@ export async function createBlog(formData: FormData) {
   const author = formData.get("author") as string;
   const url = formData.get("url") as string;
   const year = formData.get("year") as string;
-  const userId = formData.get("userId") as string;
 
-  await addBlog(title, author, url, year, userId);
+  await addBlog(title, author, url, year);
   revalidatePath("/blogs");
   redirect("/blogs");
 }
