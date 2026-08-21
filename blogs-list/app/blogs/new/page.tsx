@@ -1,4 +1,6 @@
 import { createBlog } from "@/app/actions/blogs";
+import { auth } from "@/app/auth";
+import { redirect } from "next/navigation";
 
 // CSS styles
 import "../../newBlogForm.css";
@@ -24,6 +26,12 @@ function renderRow(
 
 // Server component
 export default async function NewBlog() {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <div>
       <h2>Add new blog</h2>
