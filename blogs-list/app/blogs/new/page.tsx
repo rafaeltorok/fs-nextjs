@@ -3,10 +3,10 @@
 import { createBlog } from "@/app/actions/blogs";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useActionState, useEffect } from "react";
 
 // CSS styles
 import "../../formRow.css";
-import { useActionState, useEffect } from "react";
 
 // Renders each input row on the form
 function renderRow(
