@@ -34,6 +34,7 @@ export const registerUser = async (
     errors.username = "The username must be at least 4 characters long";
   }
 
+  // Verify if the username has already been taken
   const existingUser = await db.query.users.findFirst({
     where: eq(users.username, username),
   });
@@ -52,6 +53,7 @@ export const registerUser = async (
     errors.password = "The password must be at least 4 characters long";
   }
 
+  // Verify if the password confirmation matches the password field
   if (password !== confirmPassword) {
     errors.password = "Passwords do not match";
   }
