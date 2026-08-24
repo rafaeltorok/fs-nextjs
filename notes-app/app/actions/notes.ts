@@ -25,7 +25,7 @@ export const createNote = async (
   }
 
   await addNote(content, important);
-  
+
   revalidatePath("/notes");
   return { error: "", success: true };
 };

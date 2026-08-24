@@ -39,7 +39,9 @@ export default function RegisterPage() {
         <button
           type="submit"
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm"
-        >Register</button>
+        >
+          Register
+        </button>
       </form>
     </div>
   );

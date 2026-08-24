@@ -11,6 +11,6 @@ const NavLink = ({ href, children }: NavLinkProps) => {
       {children}
     </Link>
   );
-}
+};
 
 export default NavLink;

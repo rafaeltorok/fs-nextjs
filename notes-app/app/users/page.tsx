@@ -10,14 +10,13 @@ export default async function Users() {
 
       <ul>
         {users.map((user) => (
-          <li
-            key={user.id}
-            className="border rounded p-3 hover:bg-gray-600"
-          >
+          <li key={user.id} className="border rounded p-3 hover:bg-gray-600">
             <Link
               href={`/users/${user.id}`}
               className="text-blue-100 hover:underline"
-            >{user.name}</Link>
+            >
+              {user.name}
+            </Link>
           </li>
         ))}
       </ul>

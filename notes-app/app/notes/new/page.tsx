@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { redirect } from "next/navigation";
 import { createNote } from "../../actions/notes";
@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 export default function NewNote() {
   const { data: session } = useSession();
-  const [state, formAction] = useActionState(createNote, { 
+  const [state, formAction] = useActionState(createNote, {
     error: "",
     success: false,
   });
@@ -44,19 +44,18 @@ export default function NewNote() {
         </div>
         <div>
           <label>
-            <input
-              type="checkbox"
-              name="important"
-            />
+            <input type="checkbox" name="important" />
             Important
           </label>
         </div>
         <button
           type="submit"
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm"
-        >Create</button>
+        >
+          Create
+        </button>
         {state.error && <p style={{ color: "red" }}>{state.error}</p>}
       </form>
     </div>
   );
-};
+}

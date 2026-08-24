@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
@@ -15,4 +15,4 @@ export const registerUser = async (formData: FormData) => {
   await db.insert(users).values({ username, name, passwordHash });
 
   redirect("/login");
-}
+};
