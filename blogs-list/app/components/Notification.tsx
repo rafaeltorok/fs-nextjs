@@ -1,7 +1,6 @@
 "use client";
 
 import { useNotification } from "../context/NotificationContext";
-import "../notification.css";
 
 export default function Notification() {
   const { message, type } = useNotification();
@@ -11,17 +10,19 @@ export default function Notification() {
   function getClass() {
     switch (type) {
       case "success":
-        return "notification-success";
+        return "px-2 py-4 rounded text-white bg-green-600 font-bold";
       case "error":
-        return "notification-error";
+        return "px-2 py-4 rounded text-white bg-red-600 font-bold";
       default:
         return undefined;
     }
   }
 
   return (
-    <div className={getClass()}>
-      {message}
+    <div className="max-w-xl mx-auto p-6 flex-1 text-center">
+      <p className={getClass()}>
+        {message}
+      </p>
     </div>
   );
 }

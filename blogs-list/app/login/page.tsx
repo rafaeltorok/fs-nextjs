@@ -3,7 +3,6 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import "../formRow.css";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -28,19 +27,42 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="max-w-xl mx-auto p-6 flex-1 text-center">
+      <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label htmlFor="username">Username</label>
-          <input id="username" type="text" name="username" required />
+        <div className="flex items-center justify-center">
+          <label
+            htmlFor="username"
+            className="text-left w-1/4"
+          >Username</label>
+          <input
+            id="username"
+            type="text"
+            name="username"
+            required
+            className="grid gap-2 mb-2 md:grid-cols-1 bg-gray-700 w-3/4"
+          />
         </div>
-        <div className="form-row">
-          <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" required />
+        
+        <div className="flex items-center justify-center">
+          <label
+            htmlFor="password"
+            className="text-left w-1/4"
+          >Password</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required
+            className="grid gap-2 mb-2 md:grid-cols-1 bg-gray-700 w-3/4"
+          />
         </div>
-        <button type="submit">Login</button>
+
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
+        >Login</button>
       </form>
     </div>
   );
