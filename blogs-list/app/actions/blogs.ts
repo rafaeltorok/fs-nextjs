@@ -11,7 +11,7 @@ interface Notifications {
     author?: string;
     url?: string;
     year?: string;
-  }
+  };
   success: boolean;
 }
 
@@ -23,7 +23,7 @@ interface Values {
 }
 
 export async function createBlog(
-  prevState: { notifications: Notifications, values?: Values },
+  prevState: { notifications: Notifications; values?: Values },
   formData: FormData,
 ) {
   const session = await auth();
@@ -43,13 +43,15 @@ export async function createBlog(
 
   // Validate the Title field
   if (title?.trim().length < 5) {
-    notifications.errors.title = "The blog title must be at least 5 characters long";
+    notifications.errors.title =
+      "The blog title must be at least 5 characters long";
     notifications.success = false;
   }
 
   // Validate the Author field
   if (author?.trim().length < 5) {
-    notifications.errors.author = "The author's name must be at least 5 characters long";
+    notifications.errors.author =
+      "The author's name must be at least 5 characters long";
     notifications.success = false;
   }
 
@@ -66,15 +68,24 @@ export async function createBlog(
   }
 
   // Check if any of the error fields contains a value on it
-  if (Object.values(notifications.errors).some(val => val !== null && val !== undefined && val !== "")) {
-    return { notifications, values: { title, author, url, year }};
+  if (
+    Object.values(notifications.errors).some(
+      (val) => val !== null && val !== undefined && val !== "",
+    )
+  ) {
+    return { notifications, values: { title, author, url, year } };
   }
 
   // If there are no errors, proceed to add the new object to the database
   await addBlog(title, author, url, year);
   revalidatePath("/blogs");
 
-  return { notifications: { errors: { title: "", author: "", url: "", year: "" }, success: true } };
+  return {
+    notifications: {
+      errors: { title: "", author: "", url: "", year: "" },
+      success: true,
+    },
+  };
 }
 
 export async function updateLikeCounter(formData: FormData) {

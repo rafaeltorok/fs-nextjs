@@ -16,11 +16,15 @@ export default function NavBar() {
         {session ? (
           <>
             <NavLink href="/blogs/new">add new</NavLink>
-            <em className="text-gray-300">{session.user?.name} logged in</em>{" "}
+            <em className="text-gray-300">
+              {session.user?.name} logged in
+            </em>{" "}
             <button
               onClick={() => signOut()}
               className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm"
-            >logout</button>
+            >
+              logout
+            </button>
           </>
         ) : (
           <>

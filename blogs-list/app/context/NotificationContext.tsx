@@ -22,14 +22,14 @@ const NotificationContext = createContext<NotificationContextType>({
 export function NotificationProvider({
   children,
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode;
 }) {
   // Set the initial state
   const [message, setMessage] = useState("");
   const [type, setType] = useState<NotificationType>("success");
 
   // Handle the message timeout and content
-  function showNotification (
+  function showNotification(
     msg: string,
     notifType: NotificationType = "success",
   ) {

@@ -32,10 +32,9 @@ export default function LoginPage() {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center">
-          <label
-            htmlFor="username"
-            className="text-left w-1/4"
-          >Username</label>
+          <label htmlFor="username" className="text-left w-1/4">
+            Username
+          </label>
           <input
             id="username"
             type="text"
@@ -44,12 +43,11 @@ export default function LoginPage() {
             className="grid gap-2 mb-2 md:grid-cols-1 bg-gray-700 w-3/4"
           />
         </div>
-        
+
         <div className="flex items-center justify-center">
-          <label
-            htmlFor="password"
-            className="text-left w-1/4"
-          >Password</label>
+          <label htmlFor="password" className="text-left w-1/4">
+            Password
+          </label>
           <input
             id="password"
             type="password"
@@ -62,7 +60,9 @@ export default function LoginPage() {
         <button
           type="submit"
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
-        >Login</button>
+        >
+          Login
+        </button>
       </form>
     </div>
   );

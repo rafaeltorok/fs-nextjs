@@ -16,9 +16,7 @@ function renderRow(
 ) {
   return (
     <div className="flex items-center justify-center">
-      <label
-        className="text-left w-1/4"
-      >{label}</label>
+      <label className="text-left w-1/4">{label}</label>
       {required ? (
         <input
           type={type}
@@ -71,31 +69,41 @@ export default function NewBlog() {
       <h2 className="text-2xl font-bold mb-4 text-center">Add new blog</h2>
       <form action={formAction}>
         {renderRow("Title", "text", "title", true, state.values?.title)}
-        {state.notifications?.errors?.title && 
-          <span className="bg-red-600 p-1 rounded text-white font-bold">{state.notifications.errors.title}</span>
-        }
-        
+        {state.notifications?.errors?.title && (
+          <span className="bg-red-600 p-1 rounded text-white font-bold">
+            {state.notifications.errors.title}
+          </span>
+        )}
+
         {renderRow("Author", "text", "author", true, state.values?.author)}
-        {state.notifications?.errors?.author && 
-          <span className="bg-red-600 p-1 rounded text-white font-bold">{state.notifications.errors.author}</span>
-        }
-        
+        {state.notifications?.errors?.author && (
+          <span className="bg-red-600 p-1 rounded text-white font-bold">
+            {state.notifications.errors.author}
+          </span>
+        )}
+
         {renderRow("URL", "text", "url", true, state.values?.url)}
-        {state.notifications?.errors?.url && 
-          <span className="bg-red-600 p-1 rounded text-white font-bold">{state.notifications.errors.url}</span>
-        }
-        
+        {state.notifications?.errors?.url && (
+          <span className="bg-red-600 p-1 rounded text-white font-bold">
+            {state.notifications.errors.url}
+          </span>
+        )}
+
         {renderRow("Year", "number", "year", true, state.values?.year)}
-        {state.notifications?.errors?.year && 
-          <span className="bg-red-600 p-1 rounded text-white font-bold">{state.notifications.errors.year}</span>
-        }
+        {state.notifications?.errors?.year && (
+          <span className="bg-red-600 p-1 rounded text-white font-bold">
+            {state.notifications.errors.year}
+          </span>
+        )}
 
         <br />
 
         <button
           type="submit"
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
-        >Add</button>
+        >
+          Add
+        </button>
       </form>
     </div>
   );

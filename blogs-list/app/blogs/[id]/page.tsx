@@ -34,10 +34,9 @@ export default async function BlogPage({
         <table className="border-2 bg-black text-center rounded-md">
           <thead>
             <tr>
-              <th
-                colSpan={2}
-                className="text-2xl font-bold p-5"
-              >{blog.title}</th>
+              <th colSpan={2} className="text-2xl font-bold p-5">
+                {blog.title}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -47,10 +46,7 @@ export default async function BlogPage({
             {renderTableRow("Likes", blog.likes)}
             {renderTableRow("User", user?.name)}
             <tr>
-              <th 
-                colSpan={2}
-                className="p-3"
-              >
+              <th colSpan={2} className="p-3">
                 <button
                   type="submit"
                   className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm"

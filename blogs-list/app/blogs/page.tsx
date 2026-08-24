@@ -29,7 +29,9 @@ export default async function Blogs({
         <button
           type="submit"
           className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm w-1/4 h-10"
-        >Search</button>
+        >
+          Search
+        </button>
       </form>
 
       {blogs?.length === 0 ? (
@@ -39,10 +41,7 @@ export default async function Blogs({
           {blogs
             .toSorted((a, b) => b.likes - a.likes)
             .map((b) => (
-              <li
-                key={b.id}
-                className="border rounded p-3 hover:bg-gray-800"
-              >
+              <li key={b.id} className="border rounded p-3 hover:bg-gray-800">
                 <Link
                   href={`/blogs/${b.id}`}
                   className="text-blue-400 hover:underline"

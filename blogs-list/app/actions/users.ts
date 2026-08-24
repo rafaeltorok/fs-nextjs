@@ -19,7 +19,7 @@ interface Values {
 }
 
 export const registerUser = async (
-  prevState: { errors: Errors, values?: Values },
+  prevState: { errors: Errors; values?: Values },
   formData: FormData,
 ) => {
   const username = (formData.get("username") as string)?.trim();
@@ -59,7 +59,11 @@ export const registerUser = async (
   }
 
   // Check if any of the error fields contains a value on it
-  if (Object.values(errors).some(val => val !== null && val !== undefined && val !== "")) {
+  if (
+    Object.values(errors).some(
+      (val) => val !== null && val !== undefined && val !== "",
+    )
+  ) {
     return { errors, values: { username, name, password } };
   }
 
@@ -67,4 +71,4 @@ export const registerUser = async (
   const passwordHash = await bcrypt.hash(password, 10);
   await db.insert(users).values({ username, name, passwordHash });
   redirect("/login");
-}
+};
