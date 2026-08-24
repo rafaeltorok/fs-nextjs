@@ -19,23 +19,29 @@ export default async function UserPage({
   }
 
   return (
-    <div>
-      <h2>{user.name}</h2>
-      <p>Username: {user.username}</p>
-      <h3>Blogs</h3>
-      <ul>
+    <div className="max-w-xl mx-auto p-6">
+      <h2 className="text-2xl font-bold mb-4">{user.name}</h2>
+      <p className="text-center">Username: <strong>{user.username}</strong> </p>
+      <h3 className="text-xl font-bold mb-4 mt-8">Blogs</h3>
+      <ul className="space-y-2">
         {user.blogs?.length > 0 ? (
           <>
             {user.blogs.map((b) => (
-              <li key={b.id}>
-                <Link href={`/blogs/${b.id}`}>
+              <li
+                key={b.id}
+                className="border rounded p-3 hover:bg-gray-800"
+              >
+                <Link
+                  href={`/blogs/${b.id}`}
+                  className="text-blue-400 hover:underline"
+                >
                   {b.title} by {b.author}
                 </Link>
               </li>
             ))}
           </>
         ) : (
-          <p>This user has no blogs</p>
+          <p className="text-center">This user has no blogs</p>
         )}
       </ul>
     </div>

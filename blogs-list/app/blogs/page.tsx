@@ -5,9 +5,6 @@ import { updateRoute } from "../actions/search";
 // TypeScript types
 import type { Blog } from "@/types/blog";
 
-// CSS styles
-import "../blogList.css";
-
 // Server component
 export default async function Blogs({
   searchParams,
@@ -18,35 +15,43 @@ export default async function Blogs({
   const blogs: Blog[] = await getBlogs(filter);
 
   return (
-    <div>
-      <h2>Blogs</h2>
+    <div className="max-w-xl mx-auto p-6">
+      <h2 className="text-2xl font-bold mb-4">Blogs</h2>
 
-      <div className="search-field-area">
-        <form action={updateRoute}>
-          <input
-            type="text"
-            name="search-field"
-            id="search-field"
-            placeholder="Search by title..."
-          />
-          <button type="submit">Search</button>
-        </form>
-      </div>
+      <form action={updateRoute} className="flex">
+        <input
+          type="text"
+          name="search-field"
+          id="search-field"
+          placeholder="Search by title..."
+          className="grid gap-6 mb-6 md:grid-cols-1 bg-gray-700 w-3/4 p-2 h-10 rounded"
+        />
+        <button
+          type="submit"
+          className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm w-1/4 h-10"
+        >Search</button>
+      </form>
 
       {blogs?.length === 0 ? (
         <h3>No blogs were found.</h3>
       ) : (
-        <div className="blog-list">
+        <ul className="space-y-2">
           {blogs
             .toSorted((a, b) => b.likes - a.likes)
             .map((b) => (
-              <div key={b.id}>
-                <Link href={`/blogs/${b.id}`}>
+              <li
+                key={b.id}
+                className="border rounded p-3 hover:bg-gray-800"
+              >
+                <Link
+                  href={`/blogs/${b.id}`}
+                  className="text-blue-400 hover:underline"
+                >
                   {b.title} by {b.author}
                 </Link>
-              </div>
+              </li>
             ))}
-        </div>
+        </ul>
       )}
     </div>
   );
