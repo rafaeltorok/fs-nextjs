@@ -4,6 +4,7 @@ import { createBlog } from "@/app/actions/blogs";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
+import { useNotification } from "@/app/context/NotificationContext";
 
 // CSS styles
 import "../../formRow.css";
@@ -14,7 +15,7 @@ function renderRow(
   type: string,
   name: string,
   required: boolean,
-  defaultValue: string,
+  defaultValue: string | undefined,
 ) {
   return (
     <div className="form-row">
@@ -33,10 +34,21 @@ export default function NewBlog() {
   const router = useRouter();
   const { data: session } = useSession();
   const initialState = {
-    errors: { title: "", author: "", url: "", year: "" },
+    notifications: {
+      errors: { title: "", author: "", url: "", year: "" },
+      success: false,
+    },
     values: { title: "", author: "", url: "", year: "" },
   };
   const [state, formAction] = useActionState(createBlog, initialState);
+  const { showNotification } = useNotification();
+
+  useEffect(() => {
+    if (state.notifications.success) {
+      showNotification("New blog has been added!");
+      router.push("/blogs");
+    }
+  }, [state, showNotification, router]);
 
   useEffect(() => {
     if (!session) {
@@ -49,16 +61,16 @@ export default function NewBlog() {
       <h2>Add new blog</h2>
       <form action={formAction}>
         {renderRow("Title", "text", "title", true, state.values?.title)}
-        {state.errors?.title && <span className="notification">{state.errors.title}</span>}
+        {state.notifications?.errors?.title && <span className="notification">{state.notifications.errors.title}</span>}
         
         {renderRow("Author", "text", "author", true, state.values?.author)}
-        {state.errors?.author && <span className="notification">{state.errors.author}</span>}
+        {state.notifications?.errors?.author && <span className="notification">{state.notifications.errors.author}</span>}
         
         {renderRow("URL", "text", "url", true, state.values?.url)}
-        {state.errors?.url && <span className="notification">{state.errors.url}</span>}
+        {state.notifications?.errors?.url && <span className="notification">{state.notifications.errors.url}</span>}
         
         {renderRow("Year", "number", "year", true, state.values?.year)}
-        {state.errors?.year && <span className="notification">{state.errors.year}</span>}
+        {state.notifications?.errors?.year && <span className="notification">{state.notifications.errors.year}</span>}
 
         <br />
         <br />

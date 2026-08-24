@@ -1,0 +1,15 @@
+.notification-success,
+.notification-error {
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: white;
+}
+
+.notification-success {
+  background-color: #16a34a;
+}
+
+.notification-error {
+  background-color: #dc2626;
+}

@@ -1,5 +1,12 @@
+// Components
 import AuthSessionProvider from "./components/SessionProvider";
 import NavBar from "./components/NavBar";
+import Notification from "./components/Notification";
+
+// Context provider
+import { NotificationProvider } from "./context/NotificationContext";
+
+// CSS styles
 import "./globals.css";
 
 export default function RootLayout({
@@ -11,8 +18,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthSessionProvider>
-          <NavBar />
-          {children}
+          <NotificationProvider>
+            <NavBar />
+            <Notification />
+            {children}
+          </NotificationProvider>
         </AuthSessionProvider>
       </body>
     </html>
