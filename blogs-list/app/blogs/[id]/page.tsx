@@ -3,15 +3,12 @@ import { getBlogById } from "@/app/services/blogs";
 import { getUserById } from "@/app/services/users";
 import { updateLikeCounter } from "@/app/actions/blogs";
 
-// CSS styles
-import "../../blog.css";
-
 // Helper function
 function renderTableRow(label: string, data: string | number | undefined) {
   return (
-    <tr>
-      <th>{label}</th>
-      <td>{String(data)}</td>
+    <tr className="border-1">
+      <th className="bg-gray-800 border-1 p-3 font-normal">{label}</th>
+      <td className="bg-gray-900 border-1 p-3 font-bold">{String(data)}</td>
     </tr>
   );
 }
@@ -31,13 +28,16 @@ export default async function BlogPage({
   }
 
   return (
-    <div>
-      <form action={updateLikeCounter}>
+    <div className="max-w-xl mx-auto p-6">
+      <form action={updateLikeCounter} className="flex justify-center w-full">
         <input type="hidden" name="id" value={blog.id} />
-        <table>
+        <table className="border-2 bg-black text-center rounded-md">
           <thead>
             <tr>
-              <th colSpan={2}>{blog.title}</th>
+              <th
+                colSpan={2}
+                className="text-2xl font-bold p-5"
+              >{blog.title}</th>
             </tr>
           </thead>
           <tbody>
@@ -47,8 +47,16 @@ export default async function BlogPage({
             {renderTableRow("Likes", blog.likes)}
             {renderTableRow("User", user?.name)}
             <tr>
-              <th colSpan={2}>
-                <button type="submit">Like blog</button>
+              <th 
+                colSpan={2}
+                className="p-3"
+              >
+                <button
+                  type="submit"
+                  className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm"
+                >
+                  Like blog
+                </button>
               </th>
             </tr>
           </tbody>
