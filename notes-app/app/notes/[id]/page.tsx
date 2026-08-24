@@ -16,13 +16,18 @@ export default async function NotePage({
   }
 
   return (
-    <div>
-      <h2>{note.content}</h2>
+    <div className="max-w-2xl mx-auto p-6">
+      <h2 className="text-2xl font-bold mb-4">{note.content}</h2>
       <form action={toggleNoteImportance}>
         <div className="note-importance-area">
-          <p>{note.important ? "Important" : "Not important"}</p>
+          <p
+            className="ml-2 text-amber-600"
+          >{note.important ? "Important" : "Not important"}</p>
           <input type="hidden" name="id" value={note.id} />
-          <button type="submit">{note.important ? "✘" : "✔"}</button>
+          <button
+            type="submit"
+            className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm"
+          >{note.important ? "✘" : "✔"}</button>
         </div>
       </form>
     </div>
