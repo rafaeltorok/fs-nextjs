@@ -5,13 +5,19 @@ export default async function Users() {
   const users = await getUsers();
 
   return (
-    <div>
-      <h2>Users</h2>
+    <div className="max-w-2xl mx-auto p-6">
+      <h2 className="text-2xl font-bold mb-4">Users</h2>
 
       <ul>
         {users.map((user) => (
-          <li key={user.id}>
-            <Link href={`/users/${user.id}`}>{user.name}</Link>
+          <li
+            key={user.id}
+            className="border rounded p-3 hover:bg-gray-600"
+          >
+            <Link
+              href={`/users/${user.id}`}
+              className="text-blue-100 hover:underline"
+            >{user.name}</Link>
           </li>
         ))}
       </ul>

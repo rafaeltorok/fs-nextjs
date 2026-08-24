@@ -1,7 +1,14 @@
 import AuthSessionProvider from "./components/SessionProvider";
+
+// Components
 import NavBar from "./components/NavBar";
-import { NotificationProvider } from "./context/NotificationContext";
 import Notification from "./components/Notification";
+
+// React context
+import { NotificationProvider } from "./context/NotificationContext";
+
+// Tailwind CSS
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -10,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen bg-background text-foreground">
         <AuthSessionProvider>
           <NotificationProvider>
             <NavBar />
