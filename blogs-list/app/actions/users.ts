@@ -93,4 +93,4 @@ export const generateToken = async () => {
   await db.update(users).set({ token: token }).where(eq(users.id, id));
 
   revalidatePath("/me");
-}
+};

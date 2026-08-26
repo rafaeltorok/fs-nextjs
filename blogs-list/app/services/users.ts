@@ -17,7 +17,7 @@ export async function getUserById(id: number) {
 export async function getUserWithBlogs(username: string) {
   return db.query.users.findFirst({
     where: eq(users.username, username),
-    with: { 
+    with: {
       blogs: {
         orderBy: (blogs, { desc }) => [desc(blogs.likes)],
       },

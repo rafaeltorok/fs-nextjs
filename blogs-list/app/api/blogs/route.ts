@@ -52,11 +52,13 @@ export const POST = async (req: NextRequest) => {
   }
 
   // // Validate the Year field
-  if (!year || isNaN(Number(year)) || Number(year) < 1 || Number(year) > new Date().getFullYear()) {
-    return NextResponse.json(
-      { error: "Invalid year" },
-      { status: 400 },
-    );
+  if (
+    !year ||
+    isNaN(Number(year)) ||
+    Number(year) < 1 ||
+    Number(year) > new Date().getFullYear()
+  ) {
+    return NextResponse.json({ error: "Invalid year" }, { status: 400 });
   }
 
   await addBlog(title, author, url, year, Number(userId.id));
