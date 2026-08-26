@@ -77,7 +77,7 @@ export async function createBlog(
   }
 
   // If there are no errors, proceed to add the new object to the database
-  await addBlog(title, author, url, year);
+  await addBlog(title, author, url, year, Number(session.user?.id));
   revalidatePath("/blogs");
 
   return {
