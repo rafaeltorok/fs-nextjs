@@ -1,9 +1,9 @@
 // Next Server
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
-import { getUserId } from "@/app/services/users";
 
 // Services
+import { getUserId } from "@/app/services/users";
 import { getBlogs, addBlog } from "@/app/services/blogs";
 
 export const GET = async () => {
