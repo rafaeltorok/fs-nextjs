@@ -41,7 +41,7 @@ export async function getUserToken(id: number) {
       token: true,
     },
   });
-};
+}
 
 // Route POST /api/blogs
 export async function getUserId(token: string) {
@@ -51,7 +51,7 @@ export async function getUserId(token: string) {
       id: true,
     },
   });
-};
+}
 
 // Route GET /api/me
 export async function getUserInfo(username: string) {
