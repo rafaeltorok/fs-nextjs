@@ -72,6 +72,36 @@
 - Access on https://local.drizzle.studio
 
 
+### API Requests
+
+#### GET
+
+Fetch all available notes
+```bash
+curl -X GET http://localhost:3000/api/blogs
+```
+
+#### POST
+
+Add a new note
+
+1. Login on the Web UI: http://localhost:3000/login
+
+2. Access your Personal info page: http://localhost:3000/me
+
+3. Click on "**Generate New Token**"
+
+4. **Copy** your auth token
+
+5. Send a POST request with the blog data and your auth token (example)
+    ```bash
+    curl -X POST http://localhost:3000/api/blogs  \
+      -H "Authorization: Bearer <token>" \
+      -H "Content-Type: application/json" \
+      -d '{ "title": "My personal blog space", "author": "Myself", "url": "http://example.com", "year": 2026 }'
+    ```
+
+
 ## Notes app
 
 ### Screenshots
