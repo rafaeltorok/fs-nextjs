@@ -9,8 +9,10 @@
 
 ### Screenshots
 
-<img src="./blogs-list/img/blogs-list-view.png" alt="Blogs List page view" width="325" />
-<img src="./blogs-list/img/blog-details-view.png" alt="Blogs details view" width="300" />
+<div style="display: flex; gap: 1rem;">
+  <img src="./img/blogs-list/blogs-list-view.png" alt="Blogs List page view" width="400" />
+  <img src="./img/blogs-list/blog-details-view.png" alt="Blogs details view" width="400" />
+</div>
 
 ### Setup
 
@@ -30,7 +32,7 @@
   cd ./blogs-list && npm install
   ```
 
-- Run the migrations
+- Run migrations
   ```bash
   npx drizzle-kit migrate
   ```
@@ -72,6 +74,10 @@
 
 ## Notes app
 
+### Screenshots
+
+<img src="./img/notes-app/notes-page.png" alt="Notes page Web UI" width=450>
+
 ### Setup
 
 - Generate a secret key to sign the JWT session tokens
@@ -88,6 +94,11 @@
 - Install dependencies
   ```bash
   cd ./notes-app && npm install
+  ```
+
+- Run migrations
+  ```bash
+  npx drizzle-kit migrate
   ```
 
 ### Usage
@@ -114,3 +125,42 @@
   ```
 
 - Web UI on http://localhost:3000
+
+#### Database access
+
+- Drizzle Studio UI
+  ```bash
+  npx drizzle-kit studio
+  ```
+
+- Access on https://local.drizzle.studio
+
+
+### API Requests
+
+#### GET
+
+Fetch all available notes
+```bash
+curl -X GET http://localhost:3000/api/notes
+```
+
+#### POST
+
+Add a new note
+
+1. Login on the Web UI: http://localhost:3000/login
+
+2. Access your Personal info page: http://localhost:3000/me
+
+3. Click on "**Generate New Token**"
+
+4. **Copy** your auth token
+
+5. Send a POST request with your note's data and your auth token (example)
+    ```bash
+    curl -X POST http://localhost:3000/api/notes  \
+      -H "Authorization: Bearer <token>" \
+      -H "Content-Type: application/json" \
+      -d '{ "content": "My first note", "important": true }'
+    ```
