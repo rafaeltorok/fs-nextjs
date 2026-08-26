@@ -81,6 +81,12 @@ Fetch all available notes
 curl -X GET http://localhost:3000/api/blogs
 ```
 
+Get a user's information
+```bash
+curl -X GET http://localhost:3000/api/me \
+  -H "Authorization: Bearer <token>"
+```
+
 #### POST
 
 Add a new note
