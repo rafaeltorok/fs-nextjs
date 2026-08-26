@@ -33,9 +33,9 @@ export const generateToken = async () => {
 
   // Generate an access token
   const token = randomUUID();
-  
+
   // Store the token on the users table
   await db.update(users).set({ token: token }).where(eq(users.id, id));
 
   revalidatePath("/me");
-}
+};

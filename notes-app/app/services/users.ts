@@ -30,4 +30,4 @@ export const getUserId = async (token: string) => {
       id: true,
     },
   });
-}
+};

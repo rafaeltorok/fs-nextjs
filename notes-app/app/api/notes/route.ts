@@ -9,7 +9,7 @@ import { getNotes, addNote } from "../../services/notes";
 export const GET = async () => {
   const notes = await getNotes(false);
   return NextResponse.json(notes);
-}
+};
 
 export const POST = async (req: NextRequest) => {
   const authToken = req.headers.get("Authorization");
@@ -36,4 +36,4 @@ export const POST = async (req: NextRequest) => {
   await addNote(content, important, Number(userId.id));
   revalidatePath("/notes");
   return NextResponse.json({ success: true }, { status: 201 });
-}
+};

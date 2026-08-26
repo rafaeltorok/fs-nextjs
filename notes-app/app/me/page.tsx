@@ -17,8 +17,12 @@ export default async function MePage() {
     <div className="max-w-2xl mx-auto p-6">
       <div className="mb-10">
         <h2 className="text-2xl font-bold mb-4">My Profile</h2>
-        <p><strong>Name:</strong> {session.user?.name}</p>
-        <p><strong>Username:</strong> {session.user?.email}</p>
+        <p>
+          <strong>Name:</strong> {session.user?.name}
+        </p>
+        <p>
+          <strong>Username:</strong> {session.user?.email}
+        </p>
       </div>
 
       <div>
@@ -29,7 +33,7 @@ export default async function MePage() {
             <>
               <p>No token has been generated yet...</p>
             </>
-          ): (
+          ) : (
             <>
               <p>{String(userToken.token)}</p>
             </>
