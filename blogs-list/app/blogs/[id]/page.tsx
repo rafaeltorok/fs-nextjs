@@ -29,9 +29,9 @@ export default async function BlogPage({
 
   return (
     <div className="max-w-xl mx-auto p-6">
-      <form action={updateLikeCounter} className="flex justify-center w-full">
+      <form action={updateLikeCounter} className="flex justify-center">
         <input type="hidden" name="id" value={blog.id} />
-        <table className="border-2 bg-black text-center rounded-md">
+        <table className="border-2 bg-black text-center rounded-md w-full max-w-[350px] min-w-[300px]">
           <thead>
             <tr>
               <th colSpan={2} className="text-2xl font-bold p-5">
