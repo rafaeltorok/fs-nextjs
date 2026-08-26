@@ -5,6 +5,9 @@ import bcrypt from "bcryptjs";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { randomUUID } from "crypto";
+import { auth } from "../auth";
+import { revalidatePath } from "next/cache";
 
 interface Errors {
   username?: string;
@@ -72,3 +75,22 @@ export const registerUser = async (
   await db.insert(users).values({ username, name, passwordHash });
   redirect("/login");
 };
+
+export const generateToken = async () => {
+  const session = await auth();
+
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
+  // Get the currently logged in user's id
+  const id = Number(session.user?.id);
+
+  // Generate an access token
+  const token = randomUUID();
+
+  // Store the token on the users table
+  await db.update(users).set({ token: token }).where(eq(users.id, id));
+
+  revalidatePath("/me");
+}

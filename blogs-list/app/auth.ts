@@ -13,7 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials.password) {
+        if (!credentials?.username || !credentials?.password) {
           return null;
         }
 
@@ -42,6 +42,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.user.id = token.id as string;
+      return session;
+    },
+  },
   pages: {
     signIn: "/login",
   },
