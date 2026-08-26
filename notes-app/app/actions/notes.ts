@@ -16,6 +16,7 @@ export const createNote = async (
 
   const content = formData.get("content") as string;
   const important = formData.get("important") === "on";
+  const userId = session.user?.id;
 
   if (!content || content.length < 10) {
     return {
@@ -24,7 +25,7 @@ export const createNote = async (
     };
   }
 
-  await addNote(content, important);
+  await addNote(content, important, Number(userId));
 
   revalidatePath("/notes");
   return { error: "", success: true };

@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 import { db } from "../../db";
 import { users } from "@/db/schema";
@@ -27,8 +28,14 @@ export const generateToken = async () => {
     throw new Error("Unauthorized");
   }
 
+  // Get the currently logged in user's id
   const id = Number(session.user?.id);
+
+  // Generate an access token
   const token = randomUUID();
   
+  // Store the token on the users table
   await db.update(users).set({ token: token }).where(eq(users.id, id));
+
+  revalidatePath("/me");
 }

@@ -1,7 +1,6 @@
 import { db } from "../../db";
 import { notes } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { getCurrentUser } from "./session";
 
 export const getNotes = (importantOnly: boolean) => {
   if (importantOnly) {
@@ -19,13 +18,8 @@ export const getNoteById = (id: number) => {
   });
 };
 
-export const addNote = async (content: string, important: boolean) => {
-  const user = await getCurrentUser();
-  if (!user) {
-    throw new Error("Not logged in");
-  }
-
-  await db.insert(notes).values({ content, important, userId: user.id });
+export const addNote = async (content: string, important: boolean, userId: number) => {
+  await db.insert(notes).values({ content, important, userId: userId });
 };
 
 export const toggleImportance = async (id: number) => {

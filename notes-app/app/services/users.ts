@@ -1,6 +1,5 @@
 import { db } from "../../db";
 import { users } from "../../db/schema";
-import { auth } from "../auth";
 
 import { eq } from "drizzle-orm";
 
@@ -23,3 +22,12 @@ export const getUserToken = async (id: number) => {
     },
   });
 };
+
+export const getUserId = async (token: string) => {
+  return db.query.users.findFirst({
+    where: eq(users.token, token),
+    columns: {
+      id: true,
+    },
+  });
+}
