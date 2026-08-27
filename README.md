@@ -9,7 +9,7 @@
 
 ### Screenshots
 
-#### Desktop version
+#### Desktop web UI
 
 <div style="display: flex; gap: 1rem;">
   <img src="./img/blogs-list/blogs-list-view.png" alt="Blogs List page view" width="400" />
@@ -17,7 +17,7 @@
 </div>
 
 
-#### Mobile version
+#### Mobile web UI
 
 <div style="display: flex; gap: 1rem;">
   <img src="./img/blogs-list/mobile-blogs-list-view.png" alt="Blogs List page view on mobile devices" width="250" />
@@ -122,7 +122,14 @@ Add a new note
 
 ### Screenshots
 
+#### Desktop web UI
+
 <img src="./img/notes-app/notes-page.png" alt="Notes page Web UI" width=450>
+
+#### Mobile web UI
+
+<img src="./img/notes-app/mobile-notes-page.png" alt="Notes page mobile Web UI" width=250>
+
 
 ### Setup
 
