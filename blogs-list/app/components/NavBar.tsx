@@ -11,7 +11,7 @@ export default function NavBar() {
   return (
     <>
       <nav className="bg-gray-800 text-white px-6 py-3 flex items-center gap-4 overflow-auto">
-        <section className="MOBILE-MENU flex lg:hidden">
+        <section className="MOBILE-MENU flex lg:hidden w-full">
           <div
             className="HAMBURGER-ICON space-y-2"
             onClick={() => setIsNavOpen((prev) => !prev)}
@@ -40,68 +40,74 @@ export default function NavBar() {
               </svg>
             </div>
             
-            <ul
+            <div
               className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]"
               onClick={() => setIsNavOpen(false)}
             >
-              <NavLink href="/">home</NavLink>
-              <NavLink href="/blogs">blogs</NavLink>
-              <NavLink href="/users">users</NavLink>
+              <NavLink href="/">Home</NavLink>
+              <NavLink href="/blogs">Blogs</NavLink>
+              <NavLink href="/users">Users</NavLink>
 
               {session ? (
                 <>
-                  <NavLink href="/me">me</NavLink>
-                  <NavLink href="/blogs/new">add new</NavLink>
+                  <NavLink href="/me">Me</NavLink>
+                  <NavLink href="/blogs/new">Add new</NavLink>
 
-                  <em className="text-gray-300">
-                    {session.user?.name} logged in
-                  </em>{" "}
                   <button
                     onClick={() => signOut()}
-                    className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded w-full text-l"
+                    className="bg-gray-900 hover:bg-gray-600 px-8 py-1 rounded text-l"
                   >
-                    logout
+                    Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <NavLink href="/login">login</NavLink>
-                  <NavLink href="/register">register</NavLink>
+                  <NavLink href="/login">Login</NavLink>
+                  <NavLink href="/register">Register</NavLink>
                 </>
               )}
-            </ul>
+            </div>
           </div>
+
+          {session &&
+            <>
+              <em className="text-gray-300 ml-auto">
+                {session.user?.name} logged in
+              </em>
+            </>
+          }
         </section>
 
-        <ul className="DESKTOP-MENU hidden space-x-8 lg:flex items-center">
-          <NavLink href="/">home</NavLink>
-          <NavLink href="/blogs">blogs</NavLink>
-          <NavLink href="/users">users</NavLink>
+        <div className="DESKTOP-MENU hidden lg:flex items-center w-full">
+          <div className="space-x-8">
+            <NavLink href="/">Home</NavLink>
+            <NavLink href="/blogs">Blogs</NavLink>
+            <NavLink href="/users">Users</NavLink>
+          </div>
 
-          <div className="ml-auto flex gap-4">
+          <div className="ml-auto space-x-5">
             {session ? (
               <>
-                <NavLink href="/me">me</NavLink>
-                <NavLink href="/blogs/new">add new</NavLink>
+                <NavLink href="/me">Me</NavLink>
+                <NavLink href="/blogs/new">Add new</NavLink>
                 <em className="text-gray-300">
                   {session.user?.name} logged in
                 </em>{" "}
                 <button
                   onClick={() => signOut()}
-                  className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm"
+                  className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm font-bold"
                 >
-                  logout
+                  Logout
                 </button>
               </>
             ) : (
               <>
-                <NavLink href="/login">login</NavLink>
-                {" | "}
-                <NavLink href="/register">register</NavLink>
+                <NavLink href="/login">Login</NavLink>
+                <NavLink href="/register">Register</NavLink>
               </>
             )}
           </div>
-        </ul>
+        </div>
       </nav>
     </>
   );
