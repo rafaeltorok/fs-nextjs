@@ -38,7 +38,7 @@ export default function NavBar() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </div>
-          
+
           <div
             className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]"
             onClick={() => setIsNavOpen(false)}
@@ -51,7 +51,7 @@ export default function NavBar() {
               <>
                 <NavLink href="/me">Me</NavLink>
                 <NavLink href="/notes/new">Create note</NavLink>
-               
+
                 <button
                   onClick={() => signOut()}
                   className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-l"
@@ -79,33 +79,33 @@ export default function NavBar() {
 
       <div className="DESKTOP-MENU hidden lg:flex items-center w-full">
         <div className="space-x-8">
-            <NavLink href="/">Home</NavLink>
-            <NavLink href="/notes">Notes</NavLink>
-            <NavLink href="/users">Users</NavLink>
-          </div>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/notes">Notes</NavLink>
+          <NavLink href="/users">Users</NavLink>
+        </div>
 
-          <div className="ml-auto space-x-5">
-            {session ? (
-              <>
-                <NavLink href="/me">Me</NavLink>
-                <NavLink href="/notes/new">Create note</NavLink>
-                <em className="text-gray-300">
-                  {session.user?.name} logged in
-                </em>{" "}
-                <button
-                  onClick={() => signOut()}
-                  className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-l"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
-              </>
-            )}            
-          </div>
+        <div className="ml-auto space-x-5">
+          {session ? (
+            <>
+              <NavLink href="/me">Me</NavLink>
+              <NavLink href="/notes/new">Create note</NavLink>
+              <em className="text-gray-300">
+                {session.user?.name} logged in
+              </em>{" "}
+              <button
+                onClick={() => signOut()}
+                className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-l"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink href="/login">Login</NavLink>
+              <NavLink href="/register">Register</NavLink>
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );

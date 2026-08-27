@@ -12,10 +12,10 @@ export const getUsers = async () => {
 export const getUserWithNotes = async (id: number) => {
   return db.query.users.findFirst({
     where: eq(users.id, id),
-    with: { 
+    with: {
       notes: {
         orderBy: (notes, { asc }) => [asc(notes.id)],
-      }
+      },
     },
   });
 };
