@@ -9,9 +9,19 @@
 
 ### Screenshots
 
+#### Desktop version
+
 <div style="display: flex; gap: 1rem;">
   <img src="./img/blogs-list/blogs-list-view.png" alt="Blogs List page view" width="400" />
   <img src="./img/blogs-list/blog-details-view.png" alt="Blogs details view" width="400" />
+</div>
+
+
+#### Mobile version
+
+<div style="display: flex; gap: 1rem;">
+  <img src="./img/blogs-list/mobile-blogs-list-view.png" alt="Blogs List page view on mobile devices" width="250" />
+  <img src="./img/blogs-list/mobile-blog-details-view.png" alt="Blogs details view on mobile devices" width="250" />
 </div>
 
 ### Setup
