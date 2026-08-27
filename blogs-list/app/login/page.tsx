@@ -64,6 +64,12 @@ export default function LoginPage() {
           Login
         </button>
       </form>
+
+      <div className="mt-10 text-left w-[300px] mx-auto text-gray-500">
+        <p>Demo account:</p>
+        <p>Username: <strong>newuser@example.com</strong></p>
+        <p>Password: <strong>newuser</strong></p>
+      </div>
     </div>
   );
 }
