@@ -86,7 +86,7 @@
 
 #### GET
 
-Fetch all available notes
+Fetch all available blogs
 ```bash
 curl -X GET http://localhost:3000/api/blogs
 ```
@@ -99,7 +99,7 @@ curl -X GET http://localhost:3000/api/me \
 
 #### POST
 
-Add a new note
+Add a new blog
 
 1. Login on the Web UI: http://localhost:3000/login
 
