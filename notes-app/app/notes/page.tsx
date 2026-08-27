@@ -23,7 +23,7 @@ export default async function Notes({
       </div>
       <ul className="space-y-2">
         {notes.map((note) => (
-          <li key={note.id} className="border rounded p-3 hover:bg-gray-600">
+          <li key={note.id} className="border-1 border-gray-600 rounded p-3 hover:bg-gray-600">
             <Link
               href={`/notes/${note.id}`}
               className="text-blue-100 hover:underline"

@@ -23,7 +23,7 @@ export default async function UserPage({
       <h3 className="text-xl font-bold mb-4 mt-4">Notes:</h3>
       <ul>
         {user.notes.map((note) => (
-          <li key={note.id} className="text-center">
+          <li key={note.id} className="text-left border-1 border-gray-600 p-2 rounded my-2 hover:bg-gray-600">
             <Link
               href={`/notes/${note.id}`}
               className="text-blue-200 hover:underline"
