@@ -39,7 +39,7 @@ export default function NavBar() {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </div>
-            
+
             <div
               className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]"
               onClick={() => setIsNavOpen(false)}
@@ -69,13 +69,13 @@ export default function NavBar() {
             </div>
           </div>
 
-          {session &&
+          {session && (
             <>
               <em className="text-gray-300 ml-auto">
                 {session.user?.name} logged in
               </em>
             </>
-          }
+          )}
         </section>
 
         <div className="DESKTOP-MENU hidden lg:flex items-center w-full">
