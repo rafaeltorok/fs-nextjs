@@ -4,13 +4,19 @@ import { users } from "../../db/schema";
 import { eq } from "drizzle-orm";
 
 export const getUsers = async () => {
-  return db.query.users.findMany();
+  return db.query.users.findMany({
+    orderBy: (users, { asc }) => [asc(users.id)],
+  });
 };
 
 export const getUserWithNotes = async (id: number) => {
   return db.query.users.findFirst({
     where: eq(users.id, id),
-    with: { notes: true },
+    with: { 
+      notes: {
+        orderBy: (notes, { asc }) => [asc(notes.id)],
+      }
+    },
   });
 };
 
