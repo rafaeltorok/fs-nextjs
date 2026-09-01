@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { db } from "../../db";
 import { users } from "../../db/schema";
 
-export const getCurrentUser = async () => {
+export async function getCurrentUser() {
   const session = await auth();
   if (!session?.user?.email) {
     return null;
