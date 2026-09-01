@@ -9,20 +9,18 @@ export async function getReadingList(id: number) {
 }
 
 export async function getReadingListEntry(userId: number, blogId: number) {
-  return db.select().from(readingList).where(
-    and(
-      eq(readingList.userId, userId),
-      eq(readingList.blogId, blogId),
-    )
-  ).limit(1);
+  return db
+    .select()
+    .from(readingList)
+    .where(and(eq(readingList.userId, userId), eq(readingList.blogId, blogId)))
+    .limit(1);
 }
 
 export async function addBlogToReadingList(userId: number, blogId: number) {
-  await db.insert(readingList)
-    .values({
-      userId,
-      blogId,
-    });
+  await db.insert(readingList).values({
+    userId,
+    blogId,
+  });
 }
 
 export async function markAsRead(id: number) {

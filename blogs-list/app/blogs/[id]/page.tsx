@@ -21,7 +21,7 @@ export default async function BlogPage({
 
   // Get the blog data
   const blog = await getBlogById(Number(id));
-  
+
   // Get the currently logged in user
   const user = await getCurrentUser();
 
@@ -31,7 +31,7 @@ export default async function BlogPage({
 
   // Confirm if the blog is present on the logged in user's reading list
   let blogOnUserReadingList = [];
-  
+
   if (user) {
     blogOnUserReadingList = await getReadingListEntry(user?.id, blog.id);
   }
@@ -40,12 +40,12 @@ export default async function BlogPage({
     <div className="max-w-xl mx-auto p-6">
       <div className="flex flex-col justify-center">
         <input type="hidden" name="blog-id" value={blog.id} />
-        
-        <h2 className="text-2xl font-bold p-5">
-          {blog.title}
-        </h2>
 
-        <p className="text-gray-600">by {blog.author} ({blog.year})</p>
+        <h2 className="text-2xl font-bold p-5">{blog.title}</h2>
+
+        <p className="text-gray-600">
+          by {blog.author} ({blog.year})
+        </p>
 
         <div className="flex">
           <form action={updateLikeCounter}>
@@ -80,10 +80,7 @@ export default async function BlogPage({
           )}
         </div>
 
-        <Link
-          href={blog.url}
-          className="text-blue-500 hover:underline"
-        >
+        <Link href={blog.url} className="text-blue-500 hover:underline">
           {blog.url}
         </Link>
       </div>

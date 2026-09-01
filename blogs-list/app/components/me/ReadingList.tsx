@@ -8,11 +8,11 @@ import type { ReadingListEntry } from "@/types/readingList";
 interface ReadingListProps {
   readingListEntries: ReadingListEntry[];
   filteredEntries: {
-    read: ReadingListEntry[],
-    unread: ReadingListEntry[],
+    read: ReadingListEntry[];
+    unread: ReadingListEntry[];
   };
   formatBlogEntry: (id: number) => Promise<string>;
-};
+}
 
 export default function ReadingList({
   readingListEntries,

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import type { ReadingListEntry } from "@/types/readingList"
+import type { ReadingListEntry } from "@/types/readingList";
 
 interface ReadProps {
   readEntries: ReadingListEntry[];
   formatBlogEntry: (id: number) => Promise<string>;
 }
 
-export default function Read({ readEntries, formatBlogEntry}: ReadProps) {
+export default function Read({ readEntries, formatBlogEntry }: ReadProps) {
   return (
     <>
       <p className="font-bold text-xl">Read ({readEntries.length})</p>
@@ -16,10 +16,7 @@ export default function Read({ readEntries, formatBlogEntry}: ReadProps) {
       ) : (
         <ul className="m-5">
           {readEntries.map((e) => (
-            <li
-              key={e.id}
-              className="list-disc p-1"
-            >
+            <li key={e.id} className="list-disc p-1">
               <Link
                 href={`/blogs/${e.blogId}`}
                 className="text-blue-400 hover:underline"

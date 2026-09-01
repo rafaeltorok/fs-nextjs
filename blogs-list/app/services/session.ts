@@ -12,4 +12,4 @@ export async function getCurrentUser() {
   return db.query.users.findFirst({
     where: eq(users.username, session.user.email),
   });
-};
+}

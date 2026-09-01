@@ -7,22 +7,22 @@ import type { ReadingListEntry } from "@/types/readingList";
 interface UnreadProps {
   unreadEntries: ReadingListEntry[];
   formatBlogEntry: (id: number) => Promise<string>;
-};
+}
 
-export default function Unread({ unreadEntries, formatBlogEntry}: UnreadProps) {
+export default function Unread({
+  unreadEntries,
+  formatBlogEntry,
+}: UnreadProps) {
   return (
     <>
       <p className="font-bold text-xl">Unread ({unreadEntries.length})</p>
-      
+
       {unreadEntries.length === 0 ? (
         <p className="mt-2 mb-4">No entries left to read</p>
       ) : (
         <ul className="m-5">
           {unreadEntries.map((e) => (
-            <form
-              key={e.id}
-              action={updateReadStatus}
-            >
+            <form key={e.id} action={updateReadStatus}>
               <input type="hidden" name="id" value={e.id} />
 
               <li className="list-disc p-1">
