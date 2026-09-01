@@ -7,3 +7,14 @@ export async function getReadingList(id: number) {
     where: eq(readingList.userId, id),
   });
 }
+
+export async function markAsRead(id: number) {
+  const entryToUpdate = await getReadingList(id);
+
+  if (entryToUpdate) {
+    await db
+      .update(readingList)
+      .set({ read: true })
+      .where(eq(readingList.id, id));
+  }
+}
