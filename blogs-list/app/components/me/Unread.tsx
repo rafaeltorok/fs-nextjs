@@ -22,10 +22,10 @@ export default function Unread({
       ) : (
         <ul className="m-5">
           {unreadEntries.map((e) => (
-            <form key={e.id} action={updateReadStatus}>
-              <input type="hidden" name="id" value={e.id} />
-
-              <li className="list-disc p-1">
+            <li key={e.id} className="list-disc p-1">
+              <form action={updateReadStatus}>
+                <input type="hidden" name="blog_id" value={e.blogId} />
+              
                 <Link
                   href={`/blogs/${e.blogId}`}
                   className="text-blue-400 hover:underline"
@@ -38,8 +38,8 @@ export default function Unread({
                 >
                   Mark as read
                 </button>
-              </li>
-            </form>
+              </form>
+            </li>
           ))}
         </ul>
       )}

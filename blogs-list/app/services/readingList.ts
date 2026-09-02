@@ -1,6 +1,7 @@
 import { eq, and } from "drizzle-orm";
 import { db } from "@/db";
 import { readingList } from "@/db/schema";
+import { auth } from "../auth";
 
 export async function getReadingList(id: number) {
   return db.query.readingList.findMany({
@@ -23,13 +24,23 @@ export async function addBlogToReadingList(userId: number, blogId: number) {
   });
 }
 
-export async function markAsRead(id: number) {
-  const entryToUpdate = await getReadingList(id);
+export async function markAsRead(blogId: number) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return null;
+  }
 
-  if (entryToUpdate) {
+  // Extract the id value from the currently logged in user
+  const userId = Number(session.user.id);
+  
+  // Confirm the entry exists
+  const entryToUpdate = await getReadingListEntry(userId, blogId);
+
+  // Update the entry read status
+  if (entryToUpdate.length !== 0) {
     await db
       .update(readingList)
       .set({ read: true })
-      .where(eq(readingList.id, id));
+      .where(eq(readingList.id, entryToUpdate[0].id));
   }
 }

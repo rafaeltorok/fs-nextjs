@@ -4,8 +4,8 @@ import { revalidatePath } from "next/cache";
 import { markAsRead, addBlogToReadingList } from "../services/readingList";
 
 export async function updateReadStatus(formData: FormData) {
-  const id = Number(formData.get("id"));
-  await markAsRead(id);
+  const blogId = Number(formData.get("blog_id"));
+  await markAsRead(blogId);
   revalidatePath("/me");
 }
 
