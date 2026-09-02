@@ -34,7 +34,7 @@ export default function Unread({
                 </Link>
                 <button
                   type="submit"
-                  className="border-green-700 bg-green-700 rounded-xl p-1 ml-3 hover:bg-green-500"
+                  className="border-green-700 bg-green-700 rounded p-1 ml-3 hover:bg-green-500"
                 >
                   Mark as read
                 </button>
