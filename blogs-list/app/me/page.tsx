@@ -57,7 +57,17 @@ export default async function MePage() {
         </p>
       </div>
 
-      <div>
+      <hr className="my-10" />
+
+      <ReadingList
+        readingListEntries={readingListEntries}
+        filteredEntries={filteredEntries}
+        formatBlogEntry={formatBlogEntry}
+      />
+
+      <hr className="my-10" />
+
+      <div className="mb-10">
         <h2 className="text-2xl font-bold mb-4">API Token</h2>
         <form action={generateToken}>
           <p>Current token:</p>
@@ -67,23 +77,17 @@ export default async function MePage() {
             </>
           ) : (
             <>
-              <p>{String(userToken.token)}</p>
+              <p><strong>{String(userToken.token)}</strong></p>
             </>
           )}
           <button
             type="submit"
-            className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-4"
+            className="bg-blue-700 hover:bg-blue-500 px-3 py-1 rounded text-sm mt-4"
           >
             Generate New Token
           </button>
         </form>
       </div>
-
-      <ReadingList
-        readingListEntries={readingListEntries}
-        filteredEntries={filteredEntries}
-        formatBlogEntry={formatBlogEntry}
-      />
     </div>
   );
 }
