@@ -33,7 +33,7 @@ export default async function BlogPage({
   let blogOnUserReadingList = [];
 
   if (user) {
-    blogOnUserReadingList = await getReadingListEntry(user?.id, blog.id);
+    blogOnUserReadingList = await getReadingListEntry(user.id, blog.id);
   }
 
   return (
