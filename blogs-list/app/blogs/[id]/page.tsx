@@ -41,23 +41,25 @@ export default async function BlogPage({
       <div className="flex flex-col justify-center">
         <input type="hidden" name="blog-id" value={blog.id} />
 
-        <h2 className="text-2xl font-bold p-5">{blog.title}</h2>
+        <h2 className="text-4xl font-bold p-3">{blog.title}</h2>
 
-        <p className="text-gray-600">
+        <p className="text-gray-400 p-2">
           by {blog.author} ({blog.year})
         </p>
 
-        <div className="flex">
+        <div className="flex p-2 my-1">
           <form action={updateLikeCounter}>
             <input type="hidden" name="id" value={blog.id} />
             <p>
-              likes: {blog.likes}
-              <button
-                type="submit"
-                className="border-1 border-blue-700 bg-blue-700 hover:bg-blue-500 px-1.5 py-1 m-1 rounded"
-              >
-                like
-              </button>
+              Likes: <strong>{blog.likes}</strong>
+              {user && (
+                <button
+                  type="submit"
+                  className="border-1 border-blue-700 bg-blue-700 hover:bg-blue-500 px-3 py-1 mx-2 rounded"
+                >
+                  like
+                </button>
+              )}
             </p>
           </form>
 
@@ -70,7 +72,7 @@ export default async function BlogPage({
 
                   <button
                     type="submit"
-                    className="border-1 border-green-700 bg-green-700 hover:bg-green-500 px-1.5 py-1 m-1 rounded"
+                    className="border-1 border-green-700 bg-green-700 hover:bg-green-500 px-3 py-1 mx-2 rounded"
                   >
                     add to reading list
                   </button>
@@ -80,7 +82,7 @@ export default async function BlogPage({
           )}
         </div>
 
-        <Link href={blog.url} className="text-blue-500 hover:underline">
+        <Link href={blog.url} className="text-blue-500 hover:underline p-2">
           {blog.url}
         </Link>
       </div>
