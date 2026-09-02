@@ -24,14 +24,16 @@ export async function addBlog(
   year: string,
   userId: number,
 ) {
-  await db.insert(blogs).values({
+  const newBlog = await db.insert(blogs).values({
     title,
     author,
     url,
     year: Number(year),
     likes: 0,
     userId: userId,
-  });
+  }).returning();
+
+  return newBlog;
 }
 
 export async function likeBlog(id: number) {
