@@ -77,7 +77,9 @@ export default async function MePage() {
             </>
           ) : (
             <>
-              <p><strong>{String(userToken.token)}</strong></p>
+              <p>
+                <strong>{String(userToken.token)}</strong>
+              </p>
             </>
           )}
           <button

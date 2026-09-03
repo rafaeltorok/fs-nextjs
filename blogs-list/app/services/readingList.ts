@@ -41,7 +41,7 @@ export async function markAsRead(blogId: number) {
 
   // Extract the id value from the currently logged in user
   const userId = Number(session.user.id);
-  
+
   // Confirm the entry exists
   const entryToUpdate = await getReadingListEntry(userId, blogId);
 

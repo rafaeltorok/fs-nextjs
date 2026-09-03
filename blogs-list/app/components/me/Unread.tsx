@@ -25,7 +25,7 @@ export default function Unread({
             <li key={e.id} className="list-disc p-1">
               <form action={updateReadStatus}>
                 <input type="hidden" name="blog_id" value={e.blogId} />
-              
+
                 <Link
                   href={`/blogs/${e.blogId}`}
                   className="text-blue-400 hover:underline"
