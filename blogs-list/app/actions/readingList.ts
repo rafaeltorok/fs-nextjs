@@ -10,8 +10,7 @@ export async function updateReadStatus(formData: FormData) {
 }
 
 export async function addToUserReadingList(formData: FormData) {
-  const userId = Number(formData.get("user_id"));
   const blogId = Number(formData.get("blog_id"));
-  await addBlogToReadingList(userId, blogId);
+  await addBlogToReadingList(blogId);
   revalidatePath(`/blogs/${blogId}`);
 }

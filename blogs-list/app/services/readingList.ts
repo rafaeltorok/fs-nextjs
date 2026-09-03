@@ -17,7 +17,16 @@ export async function getReadingListEntry(userId: number, blogId: number) {
     .limit(1);
 }
 
-export async function addBlogToReadingList(userId: number, blogId: number) {
+export async function addBlogToReadingList(blogId: number) {
+  const session = await auth();
+  if (!session?.user) {
+    return null;
+  }
+
+  // Extract the id value from the currently logged in user
+  const userId = Number(session.user.id);
+
+  // Add the new entry to the user's reading list
   await db.insert(readingList).values({
     userId,
     blogId,
@@ -26,7 +35,7 @@ export async function addBlogToReadingList(userId: number, blogId: number) {
 
 export async function markAsRead(blogId: number) {
   const session = await auth();
-  if (!session?.user?.email) {
+  if (!session?.user) {
     return null;
   }
 
