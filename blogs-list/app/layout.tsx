@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 // Components
 import AuthSessionProvider from "./components/SessionProvider";
 import NavBar from "./components/NavBar";
@@ -8,6 +10,11 @@ import { NotificationProvider } from "./context/NotificationContext";
 
 // CSS styles
 import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Blogs List",
+  description: "A blogs list web app built with Next.js",
+};
 
 export default function RootLayout({
   children,
