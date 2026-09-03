@@ -84,12 +84,16 @@ export async function createBlog(
 
   // If there are no errors, proceed to add the new object to the database
   const newBlog = await addBlog(title, author, url, year, Number(session.user?.id));
-  revalidatePath("/blogs");
 
   // Include the newly added blog on the user's reading list
-  await addBlogToReadingList(Number(session.user?.id), Number(newBlog[0].id));
+  if (newBlog) {
+    await addBlogToReadingList(Number(newBlog[0].id));
+  }
 
-  // Confirm on the notification that the new blog was successfully added
+  revalidatePath("/blogs");
+  revalidatePath("/me");
+
+  // Confirm with a notification that the new blog was successfully added
   return {
     notifications: {
       errors: { title: "", author: "", url: "", year: "" },
