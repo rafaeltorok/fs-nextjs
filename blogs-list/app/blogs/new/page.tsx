@@ -42,10 +42,10 @@ export default function NewBlog() {
   const { data: session } = useSession();
   const initialState = {
     notifications: {
-      errors: { title: "", author: "", url: "", year: "" },
+      errors: { title: "", author: "", url: "" },
       success: false,
     },
-    values: { title: "", author: "", url: "", year: "" },
+    values: { title: "", author: "", url: "" },
   };
   const [state, formAction] = useActionState(createBlog, initialState);
   const { showNotification } = useNotification();
@@ -85,13 +85,6 @@ export default function NewBlog() {
         {state.notifications?.errors?.url && (
           <span className="bg-red-600 p-1 rounded text-white font-bold">
             {state.notifications.errors.url}
-          </span>
-        )}
-
-        {renderRow("Year", "number", "year", true, state.values?.year)}
-        {state.notifications?.errors?.year && (
-          <span className="bg-red-600 p-1 rounded text-white font-bold">
-            {state.notifications.errors.year}
           </span>
         )}
 

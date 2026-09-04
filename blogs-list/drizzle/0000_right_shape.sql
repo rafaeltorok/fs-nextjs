@@ -3,6 +3,5 @@ CREATE TABLE "blogs" (
 	"title" text NOT NULL,
 	"author" text NOT NULL,
 	"url" text NOT NULL,
-	"likes" integer DEFAULT 0,
-	"year" integer NOT NULL
+	"likes" integer DEFAULT 0
 );

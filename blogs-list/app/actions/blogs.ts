@@ -16,7 +16,6 @@ interface Notifications {
     title?: string;
     author?: string;
     url?: string;
-    year?: string;
   };
   success: boolean;
 }
@@ -25,7 +24,6 @@ interface Values {
   title?: string;
   author?: string;
   url?: string;
-  year?: string;
 }
 
 export async function createBlog(
@@ -40,7 +38,6 @@ export async function createBlog(
   const title = formData.get("title") as string;
   const author = formData.get("author") as string;
   const url = formData.get("url") as string;
-  const year = formData.get("year") as string;
 
   const notifications: Notifications = {
     errors: {},
@@ -67,19 +64,13 @@ export async function createBlog(
     notifications.success = false;
   }
 
-  // Validate the Year field
-  if (Number(year) < 1 || Number(year) > new Date().getFullYear()) {
-    notifications.errors.year = "Invalid year";
-    notifications.success = false;
-  }
-
   // Check if any of the error fields contains a value on it
   if (
     Object.values(notifications.errors).some(
       (val) => val !== null && val !== undefined && val !== "",
     )
   ) {
-    return { notifications, values: { title, author, url, year } };
+    return { notifications, values: { title, author, url } };
   }
 
   // If there are no errors, proceed to add the new object to the database
@@ -87,7 +78,6 @@ export async function createBlog(
     title,
     author,
     url,
-    year,
     Number(session.user?.id),
   );
 
@@ -102,7 +92,7 @@ export async function createBlog(
   // Confirm with a notification that the new blog was successfully added
   return {
     notifications: {
-      errors: { title: "", author: "", url: "", year: "" },
+      errors: { title: "", author: "", url: "" },
       success: true,
     },
   };

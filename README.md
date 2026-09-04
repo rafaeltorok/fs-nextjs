@@ -114,7 +114,7 @@ Add a new blog
     curl -X POST http://localhost:3000/api/blogs  \
       -H "Authorization: Bearer <token>" \
       -H "Content-Type: application/json" \
-      -d '{ "title": "My personal blog space", "author": "Myself", "url": "http://example.com", "year": 2026 }'
+      -d '{ "title": "My personal blog space", "author": "Myself", "url": "http://example.com" }'
     ```
 
 #### Development only routes

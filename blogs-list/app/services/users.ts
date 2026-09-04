@@ -70,7 +70,6 @@ export async function getUserInfo(username: string) {
           title: true,
           author: true,
           url: true,
-          year: true,
         },
       },
     },

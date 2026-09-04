@@ -44,7 +44,7 @@ export default async function BlogPage({
         <h2 className="text-4xl font-bold p-3">{blog.title}</h2>
 
         <p className="text-gray-400 p-2">
-          by {blog.author} ({blog.year})
+          by {blog.author}
         </p>
 
         <div className="flex p-2 my-1">

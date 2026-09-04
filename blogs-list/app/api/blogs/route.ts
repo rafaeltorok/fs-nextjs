@@ -25,7 +25,7 @@ export const POST = async (req: NextRequest) => {
   }
 
   const body = await req.json();
-  const { title, author, url, year } = body;
+  const { title, author, url } = body;
 
   // Validate the Title field
   if (!title || title.length < 5) {
@@ -51,17 +51,7 @@ export const POST = async (req: NextRequest) => {
     );
   }
 
-  // // Validate the Year field
-  if (
-    !year ||
-    isNaN(Number(year)) ||
-    Number(year) < 1 ||
-    Number(year) > new Date().getFullYear()
-  ) {
-    return NextResponse.json({ error: "Invalid year" }, { status: 400 });
-  }
-
-  await addBlog(title, author, url, year, Number(userId.id));
+  await addBlog(title, author, url, Number(userId.id));
   revalidatePath("/blogs");
   return NextResponse.json({ success: true }, { status: 201 });
 };

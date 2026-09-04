@@ -21,7 +21,6 @@ export async function addBlog(
   title: string,
   author: string,
   url: string,
-  year: string,
   userId: number,
 ) {
   const newBlog = await db
@@ -30,7 +29,6 @@ export async function addBlog(
       title,
       author,
       url,
-      year: Number(year),
       likes: 0,
       userId: userId,
     })
