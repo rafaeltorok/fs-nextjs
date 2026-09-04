@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (session) {
-      router.push("/me");
+      router.push("/");
     }
   }, [session, router]);
 
@@ -39,7 +39,7 @@ export default function LoginPage() {
   return (
     <div className="max-w-xl mx-auto p-6 flex-1 text-center">
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red" }} data-testid="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center">
           <label htmlFor="username" className="text-left w-1/4">
@@ -70,6 +70,7 @@ export default function LoginPage() {
         <button
           type="submit"
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
+          data-testid="login-button"
         >
           Login
         </button>
