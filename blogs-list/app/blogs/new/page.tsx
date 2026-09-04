@@ -11,28 +11,19 @@ function renderRow(
   label: string,
   type: string,
   name: string,
-  required: boolean,
   defaultValue: string | undefined,
 ) {
   return (
     <div className="flex items-center justify-center">
-      <label className="text-left w-1/4">{label}</label>
-      {required ? (
-        <input
-          type={type}
-          name={name}
-          defaultValue={defaultValue}
-          required
-          className="grid gap-2 mb-2 md:grid-cols-1 bg-gray-700 w-3/4"
-        />
-      ) : (
-        <input
-          type={type}
-          name={name}
-          defaultValue={defaultValue}
-          className="grid gap-2 mb-2 md:grid-cols-1 bg-gray-700 w-3/4"
-        />
-      )}
+      <label htmlFor={name} className="text-left w-1/4">{label}</label>
+      <input
+        id={name}
+        type={type}
+        name={name}
+        defaultValue={defaultValue}
+        required
+        className="grid gap-2 mb-2 md:grid-cols-1 bg-gray-700 w-3/4"
+      />
     </div>
   );
 }
@@ -67,21 +58,21 @@ export default function NewBlog() {
     <div className="max-w-xl mx-auto p-6 flex-1 text-center">
       <h2 className="text-2xl font-bold mb-4 text-center">Add new blog</h2>
       <form action={formAction}>
-        {renderRow("Title", "text", "title", true, state.values?.title)}
+        {renderRow("Title", "text", "title", state.values?.title)}
         {state.notifications?.errors?.title && (
           <span className="bg-red-600 p-1 rounded text-white font-bold">
             {state.notifications.errors.title}
           </span>
         )}
 
-        {renderRow("Author", "text", "author", true, state.values?.author)}
+        {renderRow("Author", "text", "author", state.values?.author)}
         {state.notifications?.errors?.author && (
           <span className="bg-red-600 p-1 rounded text-white font-bold">
             {state.notifications.errors.author}
           </span>
         )}
 
-        {renderRow("URL", "text", "url", true, state.values?.url)}
+        {renderRow("URL", "text", "url", state.values?.url)}
         {state.notifications?.errors?.url && (
           <span className="bg-red-600 p-1 rounded text-white font-bold">
             {state.notifications.errors.url}
