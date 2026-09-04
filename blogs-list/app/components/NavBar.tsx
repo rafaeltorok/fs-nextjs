@@ -80,16 +80,16 @@ export default function NavBar() {
 
         <div className="DESKTOP-MENU hidden lg:flex items-center w-full">
           <div className="space-x-8">
-            <NavLink href="/">Home</NavLink>
-            <NavLink href="/blogs">Blogs</NavLink>
-            <NavLink href="/users">Users</NavLink>
+            <NavLink href="/">home</NavLink>
+            <NavLink href="/blogs">blogs</NavLink>
+            <NavLink href="/users">users</NavLink>
           </div>
 
           <div className="ml-auto space-x-5">
             {session ? (
               <>
-                <NavLink href="/me">Me</NavLink>
-                <NavLink href="/blogs/new">Add new</NavLink>
+                <NavLink href="/me">me</NavLink>
+                <NavLink href="/blogs/new">add new</NavLink>
                 <em className="text-gray-300">
                   {session.user?.name} logged in
                 </em>{" "}
@@ -97,13 +97,13 @@ export default function NavBar() {
                   onClick={() => signOut()}
                   className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm font-bold"
                 >
-                  Logout
+                  logout
                 </button>
               </>
             ) : (
               <>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink href="/login">login</NavLink>
+                <NavLink href="/register">register</NavLink>
               </>
             )}
           </div>
