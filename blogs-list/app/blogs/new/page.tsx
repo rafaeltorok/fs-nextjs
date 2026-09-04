@@ -93,8 +93,9 @@ export default function NewBlog() {
         <button
           type="submit"
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
+          data-testid="create-blog-button"
         >
-          Add
+          Create
         </button>
       </form>
     </div>
