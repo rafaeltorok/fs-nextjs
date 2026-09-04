@@ -37,7 +37,6 @@ function renderRow(
   );
 }
 
-// Server component
 export default function NewBlog() {
   const router = useRouter();
   const { data: session } = useSession();
