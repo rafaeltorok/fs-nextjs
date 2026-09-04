@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import { db } from "../../db";
 import { users } from "@/db/schema";
+import bcrypt from "bcryptjs";
 
 // Route /app/users
 export async function getUsers() {
@@ -85,4 +86,14 @@ export async function getUserInfo(username: string) {
     };
   }
   return null;
+}
+
+// Route POST /api/testing/users
+export async function addUser(username: string, name: string, password: string) {
+  const passwordHash = await bcrypt.hash(password, 10);
+  const newUser = await db
+    .insert(users)
+    .values({ username, name, passwordHash })
+    .returning();
+  return newUser;
 }
