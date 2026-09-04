@@ -86,16 +86,16 @@
 
 #### GET
 
-Fetch all available blogs
-```bash
-curl -X GET http://localhost:3000/api/blogs
-```
+- Fetch all available blogs
+  ```bash
+  curl -X GET http://localhost:3000/api/blogs
+  ```
 
-Get a user's information
-```bash
-curl -X GET http://localhost:3000/api/me \
-  -H "Authorization: Bearer <token>"
-```
+- Get a user's information
+  ```bash
+  curl -X GET http://localhost:3000/api/me \
+    -H "Authorization: Bearer <token>"
+  ```
 
 #### POST
 
@@ -116,6 +116,20 @@ Add a new blog
       -H "Content-Type: application/json" \
       -d '{ "title": "My personal blog space", "author": "Myself", "url": "http://example.com", "year": 2026 }'
     ```
+
+#### Development only routes
+
+- Add a new user
+  ```bash
+  curl -X POST http://localhost:3000/api/testing/users \
+    -H "Content-Type: application/json" \
+    -d '{ "username": "testuser@email.com", "name": "Test user", "password": "testpass123" }'
+  ```
+
+- Clear all data from all tables
+  ```bash
+  curl -X DELETE http://localhost:3000/api/testing/reset
+  ```
 
 
 ## Notes app
