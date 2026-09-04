@@ -8,6 +8,10 @@ export default async function Users() {
     <div className="max-w-xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Users</h2>
       <ul className="space-y-2">
+        {users.length === 0 && (
+          <p>There are no users yet.</p>
+        )}
+
         {users.map((user) => (
           <li key={user.id} className="border rounded p-3 hover:bg-gray-800">
             <Link
