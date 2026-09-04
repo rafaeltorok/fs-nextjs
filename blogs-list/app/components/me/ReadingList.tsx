@@ -20,10 +20,10 @@ export default function ReadingList({
   formatBlogEntry,
 }: ReadingListProps) {
   return (
-    <div>
+    <div data-testid="reading-list-section">
       <h2 className="text-2xl font-bold mb-4 mt-10">Reading List</h2>
       {readingListEntries?.length === 0 ? (
-        <p>No entries available</p>
+        <p data-testid="empty-reading-list">No entries available</p>
       ) : (
         <>
           <Unread

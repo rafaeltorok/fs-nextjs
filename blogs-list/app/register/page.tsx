@@ -63,12 +63,12 @@ export default function RegisterPage() {
           state.values?.username,
         )}
         {state.errors?.username && (
-          <span className="notification">{state.errors.username}</span>
+          <span className="notification" data-testid="username-error">{state.errors.username}</span>
         )}
 
         {renderRow("Name", "name", "text", "name", state.values?.name)}
         {state.errors?.name && (
-          <span className="notification">{state.errors.name}</span>
+          <span className="notification" data-testid="name-error">{state.errors.name}</span>
         )}
 
         {renderRow(
@@ -79,19 +79,20 @@ export default function RegisterPage() {
           state.values?.password,
         )}
         {renderRow(
-          "Confirm password",
+          "Confirm Password",
           "password-confirm",
           "password",
           "password-confirm",
           "",
         )}
         {state.errors?.password && (
-          <span className="notification">{state.errors.password}</span>
+          <span className="notification" data-testid="passwordConfirm-error">{state.errors.password}</span>
         )}
 
         <button
           type="submit"
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
+          data-testid="register-button"
         >
           Register
         </button>

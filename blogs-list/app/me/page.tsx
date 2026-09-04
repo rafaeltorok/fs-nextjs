@@ -48,11 +48,11 @@ export default async function MePage() {
   return (
     <div className="max-w-2xl mx-auto p-6">
       <div className="mb-10">
-        <h2 className="text-2xl font-bold mb-4">My Profile</h2>
-        <p>
+        <h2 className="text-2xl font-bold mb-4" data-testid="user-profile">My Profile</h2>
+        <p data-testid="user-name">
           <strong>Name:</strong> {session.user?.name}
         </p>
-        <p>
+        <p data-testid="user-username">
           <strong>Username:</strong> {session.user?.email}
         </p>
       </div>
@@ -67,24 +67,25 @@ export default async function MePage() {
 
       <hr className="my-10" />
 
-      <div className="mb-10">
+      <div className="mb-10" data-testid="api-token-section">
         <h2 className="text-2xl font-bold mb-4">API Token</h2>
         <form action={generateToken}>
           <p>Current token:</p>
           {!userToken?.token ? (
             <>
-              <p>No token has been generated yet...</p>
+              <p data-testid="no-token-message">No token has been generated yet...</p>
             </>
           ) : (
-            <>
-              <p>
+            <div data-testid="token-display">
+              <p data-testid="api-token">
                 <strong>{String(userToken.token)}</strong>
               </p>
-            </>
+            </div>
           )}
           <button
             type="submit"
             className="bg-blue-700 hover:bg-blue-500 px-3 py-1 rounded text-sm mt-4"
+            data-testid="generate-token-button"
           >
             Generate New Token
           </button>
