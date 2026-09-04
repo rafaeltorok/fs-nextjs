@@ -20,7 +20,7 @@ export const GET = async (req: NextRequest) => {
   const user = await getUserById(Number(userId.id));
 
   if (!user) {
-    return NextResponse.json({ status: 404 });
+    return new NextResponse(null, { status: 404 });
   }
 
   const data = await getUserInfo(user?.username);
