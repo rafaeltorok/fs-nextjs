@@ -2,11 +2,21 @@
 
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState("");
+
+  // Check if there is a currently logged in user
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session) {
+      router.push("/me");
+    }
+  }, [session, router]);
 
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();

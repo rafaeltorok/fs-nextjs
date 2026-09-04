@@ -1,7 +1,14 @@
 "use client";
 
+// React
+import { useActionState, useEffect } from "react";
+
+// Next.js
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+
+// Actions
 import { registerUser } from "../actions/users";
-import { useActionState } from "react";
 
 function renderRow(
   label: string,
@@ -33,6 +40,16 @@ export default function RegisterPage() {
     values: { username: "", name: "", password: "" },
   };
   const [state, formAction] = useActionState(registerUser, initialState);
+  const router = useRouter();
+
+  // Check if there is a currently logged user
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session) {
+      router.push("/me");
+    }
+  }, [session, router]);
 
   return (
     <div className="max-w-xl mx-auto p-6 flex-1 text-center">
