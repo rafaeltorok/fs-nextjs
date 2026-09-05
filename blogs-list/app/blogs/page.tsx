@@ -9,10 +9,10 @@ import type { Blog } from "@/types/blog";
 export default async function Blogs({
   searchParams,
 }: {
-  searchParams: Promise<{ filter: string }>;
+  searchParams: Promise<{ filter?: string }>;
 }) {
   const { filter } = await searchParams;
-  const blogs: Blog[] = await getBlogs(filter);
+  const blogs: Blog[] = await getBlogs(filter || "");
 
   return (
     <div className="max-w-xl mx-auto p-6">
@@ -48,7 +48,7 @@ export default async function Blogs({
                   href={`/blogs/${b.id}`}
                   className="text-blue-400 hover:underline"
                 >
-                  {b.title} by {b.author}
+                  {b.title} by {b.author} | {b.likes === 1 ? (<span>1 like</span>) : (<span>{b.likes} likes</span>)}
                 </Link>
               </li>
             ))}
