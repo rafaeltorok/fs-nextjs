@@ -4,10 +4,12 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useNotification } from "@/app/context/NotificationContext";
 
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState("");
+  const { showNotification } = useNotification();
 
   // Check if there is a currently logged in user
   const { data: session } = useSession();
@@ -22,9 +24,12 @@ export default function LoginPage() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
+    const username = formData.get("username");
+    const password = formData.get("password");
+
     const result = await signIn("credentials", {
-      username: formData.get("username"),
-      password: formData.get("password"),
+      username,
+      password,
       redirect: false,
     });
 
@@ -33,6 +38,7 @@ export default function LoginPage() {
     } else {
       router.push("/");
       router.refresh();
+      showNotification(`${username} has logged in`);
     }
   }
 
