@@ -25,10 +25,12 @@ export default async function Blogs({
           id="search-field"
           placeholder="Search by title..."
           className="grid gap-6 mb-6 md:grid-cols-1 bg-gray-700 w-3/4 p-2 h-10 rounded"
+          data-testid="filter-input"
         />
         <button
           type="submit"
           className="bg-gray-900 hover:bg-gray-600 px-3 py-1 rounded text-sm w-1/4 h-10"
+          data-testid="search-button"
         >
           Search
         </button>
@@ -37,7 +39,7 @@ export default async function Blogs({
       {blogs?.length === 0 ? (
         <h3>No blogs were found.</h3>
       ) : (
-        <ul className="space-y-2">
+        <ul className="space-y-2" data-testid="blogs-list">
           {blogs
             .toSorted((a, b) => b.likes - a.likes)
             .map((b) => (

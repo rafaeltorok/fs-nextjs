@@ -15,7 +15,12 @@ export default function Unread({
 }: UnreadProps) {
   return (
     <>
-      <p className="font-bold text-xl">Unread ({unreadEntries.length})</p>
+      <p
+        className="font-bold text-xl"
+        data-testid="unread-section"
+      >
+        Unread ({unreadEntries.length})
+      </p>
 
       {unreadEntries.length === 0 ? (
         <p className="mt-2 mb-4">No entries left to read</p>

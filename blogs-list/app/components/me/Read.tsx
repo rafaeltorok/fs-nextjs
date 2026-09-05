@@ -9,7 +9,12 @@ interface ReadProps {
 export default function Read({ readEntries, formatBlogEntry }: ReadProps) {
   return (
     <>
-      <p className="font-bold text-xl">Read ({readEntries.length})</p>
+      <p
+        className="font-bold text-xl"
+        data-testid="read-section"
+      >
+        Read ({readEntries.length})
+      </p>
 
       {readEntries.length === 0 ? (
         <p className="mt-2">No entries have been read yet</p>

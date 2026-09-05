@@ -38,12 +38,20 @@ export default async function BlogPage({
 
   return (
     <div className="max-w-xl mx-auto p-6">
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center" data-testid="blog-detail">
         <input type="hidden" name="blog-id" value={blog.id} />
 
-        <h2 className="text-4xl font-bold p-3">{blog.title}</h2>
+        <h2
+          className="text-4xl font-bold p-3"
+          data-testid="blog-title"
+        >
+          {blog.title}
+        </h2>
 
-        <p className="text-gray-400 p-2">
+        <p
+          className="text-gray-400 p-2"
+          data-testid="blog-author"
+        >
           by {blog.author}
         </p>
 
@@ -73,6 +81,7 @@ export default async function BlogPage({
                   <button
                     type="submit"
                     className="border-1 border-green-700 bg-green-700 hover:bg-green-500 px-3 py-1 mx-2 rounded"
+                    data-testid="add-to-reading-list-button"
                   >
                     add to reading list
                   </button>
