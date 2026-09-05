@@ -1,0 +1,86 @@
+"use client";
+
+import { createBlog } from "@/app/actions/blogs";
+import { useActionState, useEffect } from "react";
+import { useNotification } from "@/app/context/NotificationContext";
+import { useRouter } from "next/navigation";
+
+// Renders each input row on the form
+function renderRow(
+  label: string,
+  type: string,
+  name: string,
+  defaultValue: string | undefined,
+) {
+  return (
+    <div className="flex items-center justify-center">
+      <label htmlFor={name} className="text-left w-1/4">{label}</label>
+      <input
+        id={name}
+        type={type}
+        name={name}
+        defaultValue={defaultValue}
+        required
+        className="grid gap-2 mb-2 md:grid-cols-1 bg-gray-700 w-3/4"
+      />
+    </div>
+  );
+}
+
+export default function NewBlogForm() {
+  const initialState = {
+    notifications: {
+      errors: { title: "", author: "", url: "" },
+      success: false,
+    },
+    values: { title: "", author: "", url: "" },
+  };
+  const [state, formAction] = useActionState(createBlog, initialState);
+  const { showNotification } = useNotification();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (state.notifications.success) {
+      showNotification("New blog has been added!");
+      router.push("/blogs");
+    }
+  }, [state, showNotification, router]);
+
+  return (
+    <div className="max-w-xl mx-auto p-6 flex-1 text-center">
+      <h2 className="text-2xl font-bold mb-4 text-center">Add new blog</h2>
+      <form action={formAction}>
+        {renderRow("Title", "text", "title", state.values?.title)}
+        {state.notifications?.errors?.title && (
+          <span className="bg-red-600 p-1 rounded text-white font-bold">
+            {state.notifications.errors.title}
+          </span>
+        )}
+
+        {renderRow("Author", "text", "author", state.values?.author)}
+        {state.notifications?.errors?.author && (
+          <span className="bg-red-600 p-1 rounded text-white font-bold">
+            {state.notifications.errors.author}
+          </span>
+        )}
+
+        {renderRow("URL", "text", "url", state.values?.url)}
+        {state.notifications?.errors?.url && (
+          <span className="bg-red-600 p-1 rounded text-white font-bold">
+            {state.notifications.errors.url}
+          </span>
+        )}
+
+        <br />
+
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
+          data-testid="create-blog-button"
+        >
+          Create
+        </button>
+      </form>
+    </div>
+  );
+}
