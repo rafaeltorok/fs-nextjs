@@ -8,11 +8,8 @@ interface ReadProps {
 
 export default function Read({ readEntries, formatBlogEntry }: ReadProps) {
   return (
-    <>
-      <p
-        className="font-bold text-xl"
-        data-testid="read-section"
-      >
+    <div data-testid="read-section">
+      <p className="font-bold text-xl">
         Read ({readEntries.length})
       </p>
 
@@ -32,6 +29,6 @@ export default function Read({ readEntries, formatBlogEntry }: ReadProps) {
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }

@@ -14,16 +14,18 @@ export default function Unread({
   formatBlogEntry,
 }: UnreadProps) {
   return (
-    <>
-      <p
-        className="font-bold text-xl"
-        data-testid="unread-section"
-      >
+    <div data-testid="unread-section">
+      <p className="font-bold text-xl">
         Unread ({unreadEntries.length})
       </p>
 
       {unreadEntries.length === 0 ? (
-        <p className="mt-2 mb-4">No entries left to read</p>
+        <p
+          className="mt-2 mb-4"
+          data-testid="no-unread-blogs"
+        >
+          No unread blogs
+        </p>
       ) : (
         <ul className="m-5">
           {unreadEntries.map((e) => (
@@ -40,6 +42,7 @@ export default function Unread({
                 <button
                   type="submit"
                   className="border-green-700 bg-green-700 rounded p-1 ml-3 hover:bg-green-500"
+                  data-testid={`mark-read-${e.blogId}`}
                 >
                   Mark as read
                 </button>
@@ -48,6 +51,6 @@ export default function Unread({
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }
