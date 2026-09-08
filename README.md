@@ -34,7 +34,7 @@
 - Create an `.env.local` file on the root of your project, add a Neon DB url
   ```conf
   DATABASE_URL="postgresql://<username>:<password>@<hostname>/neondb?channel_binding=require&sslmode=require"
-  AUTH_SECRET=your_secret_auth_token
+  NEXTAUTH_SECRET=your_secret_auth_token
   ```
 
 - Install dependencies

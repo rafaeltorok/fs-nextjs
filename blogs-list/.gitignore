@@ -43,3 +43,6 @@ next-env.d.ts
 # Playwright
 tests/e2e/playwright-reports
 tests/e2e/test-results
+
+# Act tool
+.secrets
