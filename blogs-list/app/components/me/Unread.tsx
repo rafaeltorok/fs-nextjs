@@ -15,15 +15,10 @@ export default function Unread({
 }: UnreadProps) {
   return (
     <div data-testid="unread-section">
-      <p className="font-bold text-xl">
-        Unread ({unreadEntries.length})
-      </p>
+      <p className="font-bold text-xl">Unread ({unreadEntries.length})</p>
 
       {unreadEntries.length === 0 ? (
-        <p
-          className="mt-2 mb-4"
-          data-testid="no-unread-blogs"
-        >
+        <p className="mt-2 mb-4" data-testid="no-unread-blogs">
           No unread blogs
         </p>
       ) : (

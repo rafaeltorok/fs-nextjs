@@ -74,12 +74,7 @@ export async function createBlog(
   }
 
   // If there are no errors, proceed to add the new object to the database
-  const newBlog = await addBlog(
-    title,
-    author,
-    url,
-    Number(session.user?.id),
-  );
+  const newBlog = await addBlog(title, author, url, Number(session.user?.id));
 
   // Include the newly added blog on the user's reading list
   if (newBlog) {

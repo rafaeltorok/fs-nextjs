@@ -88,7 +88,11 @@ export async function getUserInfo(username: string) {
 }
 
 // Route POST /api/testing/users
-export async function addUser(username: string, name: string, password: string) {
+export async function addUser(
+  username: string,
+  name: string,
+  password: string,
+) {
   const passwordHash = await bcrypt.hash(password, 10);
   const newUser = await db
     .insert(users)

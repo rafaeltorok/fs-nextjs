@@ -63,12 +63,16 @@ export default function RegisterPage() {
           state.values?.username,
         )}
         {state.errors?.username && (
-          <span className="notification" data-testid="username-error">{state.errors.username}</span>
+          <span className="notification" data-testid="username-error">
+            {state.errors.username}
+          </span>
         )}
 
         {renderRow("Name", "name", "text", "name", state.values?.name)}
         {state.errors?.name && (
-          <span className="notification" data-testid="name-error">{state.errors.name}</span>
+          <span className="notification" data-testid="name-error">
+            {state.errors.name}
+          </span>
         )}
 
         {renderRow(
@@ -86,7 +90,9 @@ export default function RegisterPage() {
           "",
         )}
         {state.errors?.password && (
-          <span className="notification" data-testid="passwordConfirm-error">{state.errors.password}</span>
+          <span className="notification" data-testid="passwordConfirm-error">
+            {state.errors.password}
+          </span>
         )}
 
         <button

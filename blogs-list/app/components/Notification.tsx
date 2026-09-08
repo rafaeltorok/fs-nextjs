@@ -20,7 +20,9 @@ export default function Notification() {
 
   return (
     <div className="max-w-xl mx-auto p-6 flex-1 text-center">
-      <p className={getClass()} data-testid="notification">{message}</p>
+      <p className={getClass()} data-testid="notification">
+        {message}
+      </p>
     </div>
   );
 }

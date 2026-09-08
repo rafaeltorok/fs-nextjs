@@ -41,17 +41,11 @@ export default async function BlogPage({
       <div className="flex flex-col justify-center" data-testid="blog-detail">
         <input type="hidden" name="blog-id" value={blog.id} />
 
-        <h2
-          className="text-4xl font-bold p-3"
-          data-testid="blog-title"
-        >
+        <h2 className="text-4xl font-bold p-3" data-testid="blog-title">
           {blog.title}
         </h2>
 
-        <p
-          className="text-gray-400 p-2"
-          data-testid="blog-author"
-        >
+        <p className="text-gray-400 p-2" data-testid="blog-author">
           by {blog.author}
         </p>
 

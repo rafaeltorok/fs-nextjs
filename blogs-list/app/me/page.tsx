@@ -48,10 +48,14 @@ export default async function MePage() {
   return (
     <div className="max-w-2xl mx-auto p-6">
       <div className="mb-10">
-        <h2 className="text-2xl font-bold mb-4" data-testid="user-profile">My Profile</h2>
+        <h2 className="text-2xl font-bold mb-4" data-testid="user-profile">
+          My Profile
+        </h2>
+
         <p data-testid="user-name">
           <strong>Name:</strong> {session.user?.name}
         </p>
+
         <p data-testid="user-username">
           <strong>Username:</strong> {session.user?.email}
         </p>
@@ -73,7 +77,9 @@ export default async function MePage() {
           <p>Current token:</p>
           {!userToken?.token ? (
             <>
-              <p data-testid="no-token-message">No token has been generated yet...</p>
+              <p data-testid="no-token-message">
+                No token has been generated yet...
+              </p>
             </>
           ) : (
             <div data-testid="token-display">

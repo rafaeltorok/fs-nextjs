@@ -48,7 +48,12 @@ export default async function Blogs({
                   href={`/blogs/${b.id}`}
                   className="text-blue-400 hover:underline"
                 >
-                  {b.title} by {b.author} | {b.likes === 1 ? (<span>1 like</span>) : (<span>{b.likes} likes</span>)}
+                  {b.title} by {b.author} |{" "}
+                  {b.likes === 1 ? (
+                    <span>1 like</span>
+                  ) : (
+                    <span>{b.likes} likes</span>
+                  )}
                 </Link>
               </li>
             ))}

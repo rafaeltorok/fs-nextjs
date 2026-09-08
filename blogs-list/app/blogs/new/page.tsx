@@ -14,7 +14,9 @@ function renderRow(
 ) {
   return (
     <div className="flex items-center justify-center">
-      <label htmlFor={name} className="text-left w-1/4">{label}</label>
+      <label htmlFor={name} className="text-left w-1/4">
+        {label}
+      </label>
       <input
         id={name}
         type={type}

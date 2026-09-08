@@ -12,4 +12,4 @@ export async function DELETE() {
 
   await clearTables();
   return new NextResponse(null, { status: 204 });
-};
+}
