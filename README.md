@@ -131,6 +131,25 @@ Add a new blog
   curl -X DELETE http://localhost:3000/api/testing/reset
   ```
 
+### Tests
+
+#### End-to-end
+
+- Install dependencies
+  ```bash
+  cd ./blogs-list && npm install
+  ```
+
+- CLI mode
+  ```bash
+  npm run test:e2e
+  ```
+
+- UI mode
+  ```bash
+  npm run test:e2e:ui
+  ```
+
 
 ## Notes app
 
