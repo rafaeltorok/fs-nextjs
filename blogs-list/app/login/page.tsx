@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useNotification } from "@/app/context/NotificationContext";
@@ -8,7 +8,12 @@ import { useNotification } from "@/app/context/NotificationContext";
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState("");
+
+  // Handles the successful login message
   const { showNotification } = useNotification();
+
+  // Prevents submitting the login form before the client-side CSRF
+  const { status } = useSession();
 
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -35,7 +40,11 @@ export default function LoginPage() {
   return (
     <div className="max-w-xl mx-auto p-6 flex-1 text-center">
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-      {error && <p style={{ color: "red" }} data-testid="error-message">{error}</p>}
+      {error && (
+        <p style={{ color: "red" }} data-testid="error-message">
+          {error}
+        </p>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center">
           <label htmlFor="username" className="text-left w-1/4">
@@ -65,6 +74,7 @@ export default function LoginPage() {
 
         <button
           type="submit"
+          disabled={status === "loading"}
           className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm mt-2"
           data-testid="login-button"
         >
