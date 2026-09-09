@@ -28,10 +28,8 @@ export const readingList = pgTable("reading_list", {
   blogId: integer("blog_id")
     .notNull()
     .references(() => blogs.id),
-  read: boolean("read")
-    .notNull()
-    .default(false),
-})
+  read: boolean("read").notNull().default(false),
+});
 
 export const usersRelations = relations(users, ({ many }) => ({
   blogs: many(blogs),
