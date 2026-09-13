@@ -20,12 +20,13 @@ export default async function Blogs({
 
       <form action={updateRoute} className="flex">
         <input
-          type="text"
+          type="search"
           name="search-field"
           id="search-field"
           placeholder="Search by title..."
           className="grid gap-6 mb-6 md:grid-cols-1 bg-gray-700 w-3/4 p-2 h-10 rounded"
           data-testid="filter-input"
+          defaultValue={filter}
         />
         <button
           type="submit"
