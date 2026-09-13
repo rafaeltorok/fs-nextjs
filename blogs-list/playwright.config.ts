@@ -1,10 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   // Look for tests relative to this configuration file.
-  testDir: './tests/e2e',
+  testDir: "./tests/e2e",
 
-  outputDir: './tests/e2e/test-results',
+  outputDir: "./tests/e2e/test-results",
 
   // Run all tests in parallel.
   fullyParallel: false,
@@ -21,26 +21,26 @@ export default defineConfig({
   workers: 1,
 
   // Reporter to use
-  reporter: [['html', { outputFolder: './tests/e2e/playwright-reports' }]],
+  reporter: [["html", { outputFolder: "./tests/e2e/playwright-reports" }]],
 
   use: {
     // Base URL to use in actions like `await page.goto('/')`.
-    baseURL: 'http://localhost:3000',
+    baseURL: "http://localhost:3000",
 
     // Collect trace when retrying the failed test.
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
   },
   // Configure projects for major browsers.
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
   ],
   // Run your local dev server before starting the tests.
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
+    command: "npm run dev",
+    url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
   },
 });
